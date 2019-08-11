@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "react-app"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "semi": "error",
+        "no-console": "off",
+        "curly": "warn",
+        "strict": ["error", "global"],
+        "react/prop-types": "warn",
+        "react/react-in-jsx-scope": "off"
+    }
+}

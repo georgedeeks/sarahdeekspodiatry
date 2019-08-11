@@ -1,0 +1,58 @@
+html {
+  background-color: #c8c8c8;
+  position: relative;
+  min-height: 100%;
+}
+
+nav > a {
+  margin-right: 1rem;
+}
+
+input {
+  background-color: #fac8bf;
+}
+
+form {
+	background-color: #698d9d;
+}
+
+@media (max-width: 1024px) {
+  img {
+    display: none;
+  }
+}
+
+body {
+  /* margin-bottom = footer height */
+  margin-bottom: 50px;
+  padding: 25px;
+}
+
+footer {
+  background-color: #698d9d;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px; /* horrible hard-code */
+  width: 100%;
+  overflow: hidden;
+}
+
+footer > div {
+  margin-left: 33px; /* horrible hard-code */
+}
+
+header {
+  background-color: #698d9d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40px; /* horrible hard-code */
+  width: 100%;
+  overflow: hidden;
+}
+
+header > nav {
+  margin-left: 33px; /* horrible hard-code */
+  margin-top: 12px; /* horrible hard-code */
+}
