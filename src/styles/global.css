@@ -47,7 +47,7 @@ header {
   position: absolute;
   left: 0;
   top: 0;
-  height: 40px; /* horrible hard-code */
+  height: 45px; /* horrible hard-code */
   width: 100%;
   overflow: hidden;
 }

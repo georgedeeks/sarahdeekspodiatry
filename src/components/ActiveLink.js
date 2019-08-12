@@ -5,14 +5,21 @@ import { Link } from "gatsby";
 import { transformPathnameToTitle } from '../utils';
 
 const ActiveLink = ({pathname, to}) => {	
+	
+	const passiveStyle = {
+		"color": "#fac8bf",
+		"fontSize": "20px",
+	};
+	
 	const activeStyle = {
+		...passiveStyle,
 		"fontWeight": "bold",
 		"textDecoration": "none",
 	};
 
 	return (
 		<Link 
-			style={pathname === to ? activeStyle : {}} 
+			style={pathname === to ? activeStyle : passiveStyle}
 			to={to}
 		>
 			{transformPathnameToTitle(to)}
