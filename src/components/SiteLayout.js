@@ -11,12 +11,22 @@ import { transformPathnameToTitle } from '../utils';
 
 const Main = styled.main`
 	margin-top: 120px; /* match header */
+	padding: 120px; /* protect main content from header and footer */
 `;
 
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
+
+/*
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	<Heading title={title || transformPathnameToTitle(pathname)} />
+
+*/
 
 // TODO pathname >> currentPathname all src refactor
 const SiteLayout = ({title, children, pathname}) => 
@@ -25,8 +35,6 @@ const SiteLayout = ({title, children, pathname}) =>
 		<Header pathname={pathname} />
 
 		<Main>
-			<Heading title={title || transformPathnameToTitle(pathname)} />
-
 			{children}
 		</Main>
 

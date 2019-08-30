@@ -10,6 +10,8 @@ import textOnlyLogo from "../../images/text-only-logo.png";
 const NativeHeader = styled.header`
 	background-color: white; /* remove */
 
+	position: fixed;
+
 	left: 0;
   top: 0;
 	width: 100%;
@@ -23,7 +25,9 @@ const NativeHeader = styled.header`
 `;
 
 const Nav = styled.nav`
-
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
 `;
 
 const Logo = styled.div`
@@ -34,29 +38,35 @@ const FootPicture = styled.img`
 	width: 143px;
 	height: 140px;
 	top: 30px;
-  position: relative;
+	position: relative;
+	padding-left: 120px;
 `;
 
 // TODO make a text component not an image
 const TextPicture = styled.img`
 	width: 195px;
 	height: 54px;
-	padding-bottom: 10px; /* TODO align with menu items */
+	padding-left: 17px;
+	padding-bottom: 10px; /* TODO align with menu items (probably by making text) */
 `;
+
+/*
+<Logo>
+			<TextPicture src={textOnlyLogo} alt="Logo text" />			
+		</Logo>
+*/
 
 const Header = ({pathname}) => 
 	<NativeHeader>
-		<Logo>
-			<FootPicture src={footOnlyLogo} alt="Foot logo" />
-			<TextPicture src={textOnlyLogo} alt="Logo text" />			
-		</Logo>
+					<FootPicture src={footOnlyLogo} alt="Foot logo" />
+
 		<Nav>
 			<ActiveLink pathname={pathname} to="/" />
 			<ActiveLink pathname={pathname} to="/about/" />
 			<ActiveLink pathname={pathname} to="/services/" />
-			<ActiveLink pathname={pathname} to="/hours/" />
+			{/*<ActiveLink pathname={pathname} to="/hours/" />*/}
 			<ActiveLink pathname={pathname} to="/location/" />
-			<ActiveLink pathname={pathname} to="/book/" />
+			{/*<ActiveLink pathname={pathname} to="/book/" />*/}
 		</Nav>
 	</NativeHeader>
 ;
