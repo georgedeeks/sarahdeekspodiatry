@@ -1,38 +1,38 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import styled from "styled-components";
 
-import Header from "./Header";
-import ActiveLink from "./ActiveLink";
+import Header from "./siteLayout/Header";
+import Footer from "./siteLayout/Footer";
+
+import Heading from "./Heading";
 
 import { transformPathnameToTitle } from '../utils';
 
+const Main = styled.main`
+	margin-top: 120px; /* match header */
+`;
+
+const Wrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
 // TODO pathname >> currentPathname all src refactor
 const SiteLayout = ({title, children, pathname}) => 
-	<div>
+	<Wrapper>
 
-		<header>
-			<nav>
-				<ActiveLink pathname={pathname} to="/" />
-				<ActiveLink pathname={pathname} to="/about/" />
-				<ActiveLink pathname={pathname} to="/services/" />
-				<ActiveLink pathname={pathname} to="/hours/" />
-				<ActiveLink pathname={pathname} to="/location/" />
-				<ActiveLink pathname={pathname} to="/book/" />
-			</nav>
-		</header>
+		<Header pathname={pathname} />
 
-		<main>
-			<Header title={title || transformPathnameToTitle(pathname)} />
+		<Main>
+			<Heading title={title || transformPathnameToTitle(pathname)} />
 
 			{children}
-		</main>
+		</Main>
 
-		<footer>
-			<div>
-				<p>Copyright George Deeks 2019</p>
-			</div>
-		</footer>
-	</div>
+		<Footer />
+
+	</Wrapper>
 ;
 
 SiteLayout.propTypes = {

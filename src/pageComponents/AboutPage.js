@@ -24,7 +24,6 @@ const AboutPage = () =>
 		<Writing>
 			<p>
 				I graduated from the University of East London in 2013 with a BSc(Hons) in Podiatric Medicine. 
-				My dissertation focused on foot diabetes and the impact it has on children.
 			</p>
 
 			<p>
@@ -38,8 +37,8 @@ const AboutPage = () =>
 			</p>
 
 			<p>
-				My friendly approach to treating my patients helps me discover their needs. 
-				This allows me the best chance to help (and help them) maintain good foot health for their everyday life.
+				My friendly approach to treating my patients helps me discover their needs, so they can
+				maintain good foot health in everyday life. 
 			</p> 
 		</Writing>
 

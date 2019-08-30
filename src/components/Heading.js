@@ -2,21 +2,21 @@ import React from "react";
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
-const StyledHeader = styled.h2`
+const StyledHeading = styled.h2`
 	color: #466675;
 `;
 
-const Header = ({title}) => {
+const Heading = ({title}) => {
 	return (
-		<StyledHeader>
+		<StyledHeading>
 			{title}
-		</StyledHeader>
+		</StyledHeading>
 	);
 };
 
-Header.propTypes = {
+Heading.propTypes = {
 	title: PropTypes.string.isRequired,
 };
 
-export default Header;
+export default Heading;
 	

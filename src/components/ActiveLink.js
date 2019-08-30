@@ -9,6 +9,7 @@ const ActiveLink = ({pathname, to}) => {
 	const passiveStyle = {
 		"color": "#fac8bf",
 		"fontSize": "20px",
+		"marginRight": "1rem",
 	};
 	
 	const activeStyle = {
