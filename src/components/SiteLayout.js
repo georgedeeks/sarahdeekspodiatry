@@ -11,7 +11,6 @@ import { transformPathnameToTitle } from '../utils';
 
 const Main = styled.main`
 	margin-top: 120px; /* match header */
-	padding: 120px; /* protect main content from header and footer */
 `;
 
 const Wrapper = styled.div`

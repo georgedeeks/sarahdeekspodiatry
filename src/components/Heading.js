@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 const StyledHeading = styled.h2`
-	color: #466675;
+	color: #646464;
+	font-weight: bold;
+	font-size: 42px;
+	font-family: Arial;
 `;
 
-const Heading = ({title}) => {
+const Heading = ({children}) => {
 	return (
 		<StyledHeading>
-			{title}
+			{children}
 		</StyledHeading>
 	);
 };
 
 Heading.propTypes = {
-	title: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired,
 };
 
 export default Heading;
