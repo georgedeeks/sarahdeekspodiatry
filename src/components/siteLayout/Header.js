@@ -4,13 +4,13 @@ import styled from "styled-components";
 
 import ActiveLink from "../ActiveLink";
 
-import footOnlyLogo from "../../images/foot-only-logo.png";
-import textOnlyLogo from "../../images/text-only-logo.png";
+import footOnlyLogo from "../../images/logo_symbol.png";
+import textOnlyLogo from "../../images/logo_text.png";
 
 const NativeHeader = styled.header`
 	background-color: white; /* remove */
 
-	position: fixed;
+	position: absolute;
 
 	left: 0;
   top: 0;

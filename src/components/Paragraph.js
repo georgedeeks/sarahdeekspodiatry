@@ -7,6 +7,7 @@ const StyledParagraph = styled.div`
 	font-size: 18px;	
 	line-height: 24px;
 	max-width: 500px;
+	min-width: 500px;
 `;
 
 const Paragraph = ({children}) => {

@@ -7,6 +7,7 @@ const StyledHeading = styled.h2`
 	font-weight: bold;
 	font-size: 42px;
 	font-family: Arial;
+	margin: 0 0 50px 0;
 `;
 
 const Heading = ({children}) => {

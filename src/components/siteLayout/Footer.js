@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import footOnlyLogo from "../../images/foot-only-logo.png";
+import footOnlyLogo from "../../images/logo_symbol.png";
 
 const NativeFooter = styled.footer`
-  background-color: #F5F5F5;
+	background-color: #EBF0EF;
   position: absolute;
   left: 0;
   bottom: 0;

@@ -1,30 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 
-import blueSarah from "../../images/sarah-profile-blue.png";
+import blueSarah from "../../images/sarah-profile.png";
 
 import Tile from '../../components/Tile';
 import Heading from '../../components/Heading';
 import Paragraph from '../../components/Paragraph';
+import VerticalSpacing from "../../components/VerticalSpacing";
 
 const Writing = styled.div`
-
+	padding-top: 135px;
 `;
 
 const SarahPic = styled.img`
-	padding-right: 40px;
-	height: 400px;
-	width: 300px;
+	padding-right: 80px;
+	padding-top: 60px;
+	max-height: 400px;
+	max-width: 300px;
 `;
 
 const AboutTile = () => (
-	<Tile height="790px">
+	<Tile height={675}>
 		<SarahPic src={blueSarah} alt="Picture of Sarah" />
 
 		<Writing>
 			<Heading>
-				About me
+				About
 			</Heading>
+
 			<Paragraph>
 				<p>
 					I graduated from the University of East London in 2013 with a BSc(Hons) in Podiatric Medicine. 
