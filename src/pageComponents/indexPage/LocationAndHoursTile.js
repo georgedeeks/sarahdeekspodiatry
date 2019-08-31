@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 import Tile from '../../components/Tile';
 import Heading from '../../components/Heading';
-import VerticalSpacing from '../../components/VerticalSpacing';
+
+import footOnlyLogo from "../../images/logo_symbol.png";
 
 const ContentWrapper = styled.div`
 	display: flex;
@@ -45,6 +46,13 @@ const Purple = styled.div`
 	color: purple;
 `;
 
+const FootPicture = styled.img`
+	width: 99px;
+	height: 96px;
+	top: 157px;
+	position: relative;
+`;
+
 const ServicesTile = () => (
 	<Tile height={834}>
 		<ContentWrapper>
@@ -78,8 +86,12 @@ const ServicesTile = () => (
 				title="google-maps"
 			/>
 
+
+<FootPicture src={footOnlyLogo} alt="Foot logo" />
+
+
 		</ContentWrapper>
-		
+
 		
 	</Tile>	
 );

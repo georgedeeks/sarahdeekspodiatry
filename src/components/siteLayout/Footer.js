@@ -24,7 +24,8 @@ const FootPicture = styled.img`
 	width: 99px;
 	height: 96px;
 	top: -48px;
-  position: absolute;
+	
+	position: relative;
 `;
 
 const Footer = () => 

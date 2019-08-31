@@ -50,23 +50,26 @@ const TextPicture = styled.img`
 	padding-bottom: 10px; /* TODO align with menu items (probably by making text) */
 `;
 
-/*
-<Logo>
-			<TextPicture src={textOnlyLogo} alt="Logo text" />			
-		</Logo>
-*/
+const LogoWrapper = styled.div`
+	display: flex;
+	height: 100%;
+  align-items: flex-end;
+`;
 
 const Header = ({pathname}) => 
 	<NativeHeader>
-					<FootPicture src={footOnlyLogo} alt="Foot logo" />
-
+		<LogoWrapper>
+			<FootPicture src={footOnlyLogo} alt="Foot logo" />
+			<Logo>
+				<TextPicture src={textOnlyLogo} alt="Logo text" />			
+			</Logo>
+		</LogoWrapper>
+		
 		<Nav>
-			<ActiveLink pathname={pathname} to="/" />
-			<ActiveLink pathname={pathname} to="/about/" />
-			<ActiveLink pathname={pathname} to="/services/" />
-			{/*<ActiveLink pathname={pathname} to="/hours/" />*/}
-			<ActiveLink pathname={pathname} to="/location/" />
-			{/*<ActiveLink pathname={pathname} to="/book/" />*/}
+			<ActiveLink title="Home" pathname={pathname} to="/" />
+			<ActiveLink title="About" pathname={pathname} to="/about/" />
+			<ActiveLink title="Services" pathname={pathname} to="/services/" />
+			<ActiveLink title="Location & Contact" pathname={pathname} to="/location/" />
 		</Nav>
 	</NativeHeader>
 ;
