@@ -48,7 +48,7 @@ const SPACPicture = styled.img`
 `;
 
 const AboutTile = () => (
-	<Tile height={675}>
+	<Tile height={675} id="about">
 		<PicsWrapper>
 			<SarahPic src={blueSarah} alt="Picture of Sarah" />
 			<LogosWrapper>

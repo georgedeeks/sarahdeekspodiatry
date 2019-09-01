@@ -10,7 +10,6 @@ import Heading from "./Heading";
 import { transformPathnameToTitle } from '../utils';
 
 const Main = styled.main`
-	margin-top: 120px; /* match header */
 `;
 
 const Wrapper = styled.div`

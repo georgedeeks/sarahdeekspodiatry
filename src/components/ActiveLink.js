@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 
 import { transformPathnameToTitle } from '../utils';
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
 	text-decoration: none;
 	margin-right: 1rem;	
 	height: 41px;
@@ -16,6 +16,7 @@ const StyledLink = styled(Link)`
 	font-weight: bold;
 	line-height: 21px;
 	text-align: center;
+	white-space:nowrap;
 	
 	${props => props.active && props.active === 'true' && `
 		border-bottom: 4px solid #ACD4CE;

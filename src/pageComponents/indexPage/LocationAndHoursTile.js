@@ -66,8 +66,8 @@ const Building = styled.div`
 	justify-content: flex-start;
 `;
 
-const ServicesTile = () => (
-	<Tile height={834}>
+const LocationAndHoursTile = () => (
+	<Tile height={834} id="location-hours">
 		<ContentWrapper>
 			<Heading>
 				Location & Hours
@@ -114,4 +114,4 @@ const ServicesTile = () => (
 	</Tile>	
 );
 
-export default ServicesTile;
+export default LocationAndHoursTile;

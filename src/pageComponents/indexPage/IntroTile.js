@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 	margin-top: 90px;
 `;
 
-const TextBlock = styled.div`
+const TextBlock = styled.span`
 	display: flex;
 	flex-direction: column;
 	flex: 1;
@@ -33,13 +33,12 @@ const TextBlock = styled.div`
 	margin-top: 1.5rem;
 `;
 
-const Title = styled.div`
+const Title = styled.span`
 	font-weight: normal;
 	font-style: italic;
 
-	color: purple;
+	color: mediumpurple;
 
-	opacity: 0.75;
 
 	font-size: 18px;	
 	line-height: 24px;
@@ -48,7 +47,7 @@ const Title = styled.div`
 
 `;
 
-const Tel = styled.div`
+const Tel = styled.span`
 	margin-bottom: 1rem;
 `;
 
@@ -58,7 +57,7 @@ const ContactPlainLink = styled(PlainLink)`
 `;
 
 const IntroTile = () => (
-	<Tile background="#EBF0EF" height={586}>
+	<Tile background="#EBF0EF" height={586} id="intro">
 		
 	
 
@@ -87,11 +86,12 @@ const IntroTile = () => (
 								+44(0)7553460729
 							</ContactPlainLink> 
 						</Tel>
-						<div>
+						<span>
 							<Title>Email:</Title>
 							<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
 								sarahjdeeks@gmail.com
-							</ContactPlainLink></div>
+							</ContactPlainLink>
+						</span>
 					</TextBlock>
 				</p>
 			</Paragraph>

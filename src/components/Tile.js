@@ -11,10 +11,11 @@ const Wrapper = styled.div`
 	height: ${props => props.height || 1}px;
 `;
 
-const Tile = ({children, background, height}) => (
+const Tile = ({children, background, height, id}) => (
 	<Wrapper 
 		background={background} 
 		height={(height > 250) ? height : 251}
+		id={id}
 	>
 		{children}
 	</Wrapper>	
