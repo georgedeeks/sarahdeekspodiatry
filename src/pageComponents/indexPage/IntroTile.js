@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 import feetOnRock from "../../images/feet-on-rock.png";
+import footprintTopRightFoot from "../../images/footprint-top-right-foot.svg";
+
 
 import Tile from '../../components/Tile';
 import PlainLink from '../../components/PlainLink';
@@ -34,7 +36,7 @@ const TextBlock = styled.span`
 `;
 
 const Title = styled.span`
-	font-weight: normal;
+	font-weight: bold;
 	font-style: italic;
 
 	color: mediumpurple;
@@ -47,7 +49,12 @@ const Title = styled.span`
 
 `;
 
-const Tel = styled.span`
+const Contact = styled.span`
+	display: flex;
+	flex-direction: column;
+`;
+
+const Tel = styled(Contact)`
 	margin-bottom: 1rem;
 `;
 
@@ -56,49 +63,66 @@ const ContactPlainLink = styled(PlainLink)`
 	line-height: 24px;
 `;
 
+const BackgroundFootPicture = styled.img`
+	// width: 143px;
+	// height: 140px;
+	top: 30px;
+`;
+
+const BackgroundWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
 const IntroTile = () => (
 	<Tile background="#EBF0EF" height={586} id="intro">
 		
-	
+		<BackgroundWrapper>
 
-		<Wrapper>
 
-			<Paragraph>
-				<VerticalSpacing size={30} />
-				<p>
-					I run a podiatric clinic on 
-					<b> Friday afternoons </b> in a modern setting on 
-					<b> Finchley Road</b>, West London.
-				</p>
-				<p>
-					I am HCPC-certified podiatrist with over 5 years' experience working across London, 
-					and offer a range of services.
-				</p>
-				<p>
-					Get in touch today to make an appointment&hellip;
-					
-				</p>
-				<p>
-					<TextBlock>
-						<Tel>
-							<Title>Telephone:</Title>
-							<ContactPlainLink href="tel:+447553460729"> 
-								+44(0)7553460729
-							</ContactPlainLink> 
-						</Tel>
-						<span>
-							<Title>Email:</Title>
-							<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
-								sarahjdeeks@gmail.com
-							</ContactPlainLink>
-						</span>
-					</TextBlock>
-				</p>
-			</Paragraph>
+			<Wrapper>
 
-			<FootPicture src={feetOnRock} alt="Picture of feet" />
+				<Paragraph>
+					<VerticalSpacing size={30} />
+					<p>
+						I run a podiatric clinic on 
+						<b> Friday afternoons </b> in a modern setting on 
+						<b> Finchley Road</b>, West London.
+					</p>
+					<p>
+						I am a HCPC-certified podiatrist with over 5 years' experience working across London, 
+						and offer a range of services.
+					</p>
+					<p>
+						Get in touch today to make an appointment&hellip;
+						
+					</p>
+					<p>
+						<TextBlock>
+							<Tel>
+								<Title>Telephone:</Title>
+								<ContactPlainLink href="tel:+447553460729"> 
+									+44(0)7553460729
+								</ContactPlainLink> 
+							</Tel>
+							<Contact>
+								<Title>Email:</Title>
+								<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
+									sarahjdeeks@gmail.com
+								</ContactPlainLink>
+							</Contact>
+						</TextBlock>
+					</p>
+				</Paragraph>
 
-		</Wrapper>
+				<FootPicture src={feetOnRock} alt="Picture of feet" />
+
+			</Wrapper>
+
+			<BackgroundFootPicture src={footprintTopRightFoot} alt="Background image of foot" />
+
+		</BackgroundWrapper>
+
 
 	</Tile>	
 );

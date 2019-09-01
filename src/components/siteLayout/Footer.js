@@ -105,7 +105,7 @@ const PictureFrameRight = styled.div`
 
 const Title = styled.div`
 	font-weight: bold;
-	margin-bottom: 0.25rem;
+	margin-bottom: 0.4em;
 `;
 
 const ContactPlainLink = styled(PlainLink)`

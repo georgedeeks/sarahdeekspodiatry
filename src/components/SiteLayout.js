@@ -17,20 +17,23 @@ const Wrapper = styled.div`
 	flex-direction: column;
 `;
 
-/*
-	display: flex;
-	justify-content: center;
-	align-items: center;
 
-	<Heading title={title || transformPathnameToTitle(pathname)} />
+	const Fixy = styled.div`
+		position:fixed;
+		top:-1px; 
+		height:1px; 
+		width:100%; 
+		background:white;
+	`;
 
-*/
+
 
 // TODO pathname >> currentPathname all src refactor
 const SiteLayout = ({title, children, pathname}) => 
 	<Wrapper>
 
 		<Header pathname={pathname} />
+
 
 		<Main>
 			{children}

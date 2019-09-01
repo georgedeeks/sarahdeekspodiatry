@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
+import throttle from 'lodash/throttle';
 
 import ActiveLink from "../ActiveLink";
 
@@ -8,6 +9,7 @@ import footOnlyLogo from "../../images/logo_symbol.png";
 import textOnlyLogo from "../../images/logo_text.png";
 
 const NAV_STICKY_OFFSET = 120;
+const CONDENSED_NAV_STICKY_OFFSET = 60;
 
 const NativeHeader = styled.header`
 	background-color: white; /* remove */
@@ -17,7 +19,7 @@ const NativeHeader = styled.header`
 	left: 0;
   top: 0;
 	width: 100%;
-	
+		
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -27,7 +29,8 @@ const NativeHeader = styled.header`
 
 	${props => props.hasScrolled && `
 		border-bottom: #7ECDC1 1px solid;
-		height: 60px;
+		height: ${CONDENSED_NAV_STICKY_OFFSET}px;
+		
 	`}
 
 	`;
@@ -87,8 +90,9 @@ const Header = ({pathname}) => {
 
 	const [hasScrolled, setHasScrolled] = useState(false);
 
-  useEffect(() => {
-    const onScroll = event => {
+	// TODO remove throttling effect
+	const throttled = useRef(throttle((hasScrolled) => {
+		const onScroll = event => {
       const itHasScrolled = window.pageYOffset > NAV_STICKY_OFFSET;
 
       if (itHasScrolled !== hasScrolled) {
@@ -97,14 +101,14 @@ const Header = ({pathname}) => {
     };
 
     window.addEventListener('scroll', onScroll);
-    setHasScrolled(window.pageYOffset > NAV_STICKY_OFFSET);
+    setHasScrolled(window.pageYOffset > CONDENSED_NAV_STICKY_OFFSET);
 
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
-  }, [hasScrolled]);
+	}, 2));
 
-	console.log('hasScrolled', hasScrolled);
+  useEffect(() => throttled.current(hasScrolled), [hasScrolled]);
 
 	return (
 		<NativeHeader hasScrolled={hasScrolled}>
