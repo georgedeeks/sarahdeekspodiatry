@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Link } from "gatsby";
+
 import Tile from '../../components/Tile';
 import Heading from '../../components/Heading';
 
@@ -53,6 +55,18 @@ const FootPicture = styled.img`
 	position: relative;
 `;
 
+const SmallText = styled.div`
+	font-size: 14px;
+	font-style: italic;
+	margin-left: 0.5rem;
+`;
+
+const Building = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+`;
+
 const ServicesTile = () => (
 	<Tile height={834}>
 		<ContentWrapper>
@@ -62,7 +76,10 @@ const ServicesTile = () => (
 
 			<InfoWrapper>
 				<Location>
-					<Bold>Finchley Osteopathy Clinic</Bold>
+					<Building>
+						<a href="https://healthspace307.com/" target="_blank"><Bold>Health Space 307</Bold></a>
+						<SmallText>(link opens in new window)</SmallText>
+					</Building>
 					<div>307 Regents Park Rd, Finchley, London N3 1DP</div>
 				</Location>
 
@@ -80,9 +97,9 @@ const ServicesTile = () => (
 				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.302179388684!2d-0.1985182842266448!3d51.599351579650374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487617521178e1cb%3A0x691313c53747e04d!2sFinchley+Osteopathy+Clinic!5e0!3m2!1sen!2suk!4v1565564708951!5m2!1sen!2suk" 
 				width="900" 
 				height="450" 
-				frameborder="0" 
+				frameBorder="0" 
 				style={{"border" : "0"}}
-				allowfullscreen
+				allowFullScreen
 				title="google-maps"
 			/>
 

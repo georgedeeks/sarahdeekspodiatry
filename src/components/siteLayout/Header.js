@@ -28,6 +28,7 @@ const Nav = styled.nav`
 	height: 100%;
 	display: flex;
 	align-items: flex-end;
+	margin-right: 2rem;
 `;
 
 const Logo = styled.div`

@@ -9,7 +9,7 @@ const StyledLink = styled(Link)`
 	text-decoration: none;
 	margin-right: 1rem;	
 	height: 41px;
-	width: 104px;
+	min-width: 104px;
 	color: #646464;
 	font-family: Arial;
 	font-size: 18px;
@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
 	line-height: 21px;
 	text-align: center;
 	
-	${props => props.active && `
+	${props => props.active && props.active === 'true' && `
 		border-bottom: 4px solid #ACD4CE;
 		height: 37px;
 	`}
@@ -38,7 +38,7 @@ const ActiveLink = ({pathname, to, title}) => {
 	return (
 		<StyledLink 
 			to={to}
-			active={!!(pathname === to)}
+			active={(pathname === to).toString()}
 		>
 			{title}
 		</StyledLink>	
