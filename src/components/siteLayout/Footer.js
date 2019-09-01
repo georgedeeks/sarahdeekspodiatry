@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import PlainLink from '../../components/PlainLink';
+
 import footOnlyLogo from "../../images/logo_symbol.png";
 import hcpcLogo from '../../images/hcpc-logo-300x254.jpg';
 import socPandCLogo from '../../images/soc-chi-pod.png';
@@ -10,7 +12,7 @@ const NativeFooter = styled.footer`
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 291px; /* matches global.css body margin-bottom */
+  height: 261px; /* matches global.css body margin-bottom */
   width: 100%;
 	overflow: hidden;
 	
@@ -22,6 +24,8 @@ const Copyright = styled.div`
 	height: 100%;
 	display: flex;
 	align-items: flex-end;
+
+	font-size: 12px;
 `;
 
 const FootPicture = styled.img`
@@ -43,7 +47,12 @@ const ContentContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: space-apart;
-	padding: 1rem;
+	padding: 1rem 30px;
+
+	color: #646464;	
+	font-family: Arial;	
+	font-size: 18px;	
+	line-height: 24px;
 `;
 
 const LogoContainer = styled.div`
@@ -61,20 +70,22 @@ const InfoContainer = styled.div`
 `;
 
 const HCPCPicture = styled.img`
-	zoom: 37%;
-	padding: 15px;
+	zoom: 24%;
+	padding: 10px;
 `;
 
 const SPACPicture = styled.img`
-	zoom: 37%;
+	zoom: 24%;
 
 `;
 
 const TextBlock = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	flex: 1;
+
 
 `;
 
@@ -92,6 +103,21 @@ const PictureFrameRight = styled.div`
 
 `;
 
+const Title = styled.div`
+	font-weight: bold;
+	margin-bottom: 0.25rem;
+`;
+
+const ContactPlainLink = styled(PlainLink)`
+	margin-left: 0.125em;
+`;
+
+const ContactType = styled.span`
+	font-style: italic;
+	color: purple;
+	opacity: 0.75;
+`;
+
 const Footer = () => 
 	<NativeFooter>
 		
@@ -104,20 +130,37 @@ const Footer = () =>
 				<LogoContainer>
 
 					<PictureFrameLeft>
-						<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
+						<SPACPicture src={socPandCLogo} alt="SPAC logo" />
 					</PictureFrameLeft>
 
 					<TextBlock>
-						Sarah Deeks Podiatry
+						<Title>Sarah Deeks Podiatry</Title>
+						<div>
+							<ContactType>Tel: </ContactType>
+							<ContactPlainLink href="tel:+447553460729"> 
+								+44(0)7553460729
+							</ContactPlainLink>
+						</div>						
+						<div>
+							<ContactType>Email: </ContactType> 							
+							<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
+								sarahjdeeks@gmail.com
+							</ContactPlainLink>
+						</div>
 					</TextBlock>
 
 					<PictureFrameRight>
-						<SPACPicture src={socPandCLogo} alt="SPAC logo" />
+						<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
 					</PictureFrameRight>
 
 				</LogoContainer>
 
-			<Copyright>Copyright George Deeks 2019</Copyright>
+			<Copyright>
+				Copyright © George Deeks 2019
+				{new Date().getFullYear() > 2019 && (
+					' ‒ ' + new Date().getFullYear()
+				)}
+			</Copyright>
 
 		</ContentContainer>
 

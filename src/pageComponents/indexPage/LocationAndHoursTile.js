@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Link } from "gatsby";
-
+import PlainLink from '../../components/PlainLink';
 import Tile from '../../components/Tile';
 import Heading from '../../components/Heading';
 
@@ -77,8 +76,10 @@ const ServicesTile = () => (
 			<InfoWrapper>
 				<Location>
 					<Building>
-						<a href="https://healthspace307.com/" target="_blank"><Bold>Health Space 307</Bold></a>
-						<SmallText>(link opens in new window)</SmallText>
+						<PlainLink href="https://healthspace307.com/" target="_blank">
+							<Bold>Health Space 307</Bold>
+						</PlainLink>
+						<SmallText>(link opens in a new window)</SmallText>
 					</Building>
 					<div>307 Regents Park Rd, Finchley, London N3 1DP</div>
 				</Location>
