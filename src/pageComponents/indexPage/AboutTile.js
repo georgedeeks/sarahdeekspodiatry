@@ -5,6 +5,8 @@ import blueSarah from "../../images/sarah-profile.png";
 
 import hcpcLogo from '../../images/hcpc-logo-300x254.jpg';
 import socPandCLogo from '../../images/soc-chi-pod.png';
+import footprintTopLeftFoot from "../../images/footprint-top-left-foot.svg";
+
 
 import Tile from '../../components/Tile';
 import Heading from '../../components/Heading';
@@ -45,6 +47,10 @@ const HCPCPicture = styled.img`
 
 const SPACPicture = styled.img`
 	zoom: 17%;
+`;
+
+const BackgroundFootPicture = styled.img`
+	top: 30px;
 `;
 
 const AboutTile = () => (
@@ -95,7 +101,12 @@ const AboutTile = () => (
 					maintain good foot health in everyday life. 
 				</p> 
 			</Paragraph>
+
+			<BackgroundFootPicture src={footprintTopLeftFoot} alt="Background image of foot" />
+
 		</Writing>
+
+
 	</Tile>	
 );
 

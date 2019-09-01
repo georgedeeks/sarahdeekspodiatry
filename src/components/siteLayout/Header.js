@@ -85,36 +85,65 @@ const LogoWrapper = styled.div`
 	`}
 `;
 
+const StickyHell = styled.div`
+	width: 1px;
+	height: 120px;
+	visibility: hidden;
+`;
 
 const Header = ({pathname}) => {
 
 	const [hasScrolled, setHasScrolled] = useState(false);
 
-	// TODO remove throttling effect
-	const throttled = useRef(throttle((hasScrolled) => {
-		const onScroll = event => {
-      const itHasScrolled = window.pageYOffset > NAV_STICKY_OFFSET;
+	const [lastScrolled, setLastScrolled] = useState([0, 0, 0]);
 
-      if (itHasScrolled !== hasScrolled) {
-        setHasScrolled(itHasScrolled);
-      }
-    };
+	const [lastGap, setLastGap] = useState(0);
 
-    window.addEventListener('scroll', onScroll);
-    setHasScrolled(window.pageYOffset > CONDENSED_NAV_STICKY_OFFSET);
 
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
-	}, 2));
+	const throttled = useRef(throttle((hasScrolled, lastScrolled, lastGap) => {
 
-  useEffect(() => throttled.current(hasScrolled), [hasScrolled]);
+		var gap = Math.abs(window.pageYOffset - lastScrolled[2]);
+
+		const onScroll = (event) => {
+			const itHasScrolled = window.pageYOffset > 120;
+
+			var gap = Math.abs(window.pageYOffset - lastScrolled[2]);
+
+			setLastGap(gap);
+			if (
+				itHasScrolled !== hasScrolled 
+				&& 
+				window.pageYOffset !== lastScrolled[2]
+				&&
+				gap !== lastGap
+				&&
+				gap > 0
+				&& 
+				window.pageYOffset !== gap
+			) {
+				setHasScrolled(itHasScrolled);
+				setLastScrolled([lastScrolled[0], lastScrolled[1], window.pageYOffset]);
+			}
+		};
+	
+		window.addEventListener('scroll', onScroll);
+
+		setHasScrolled(window.pageYOffset > 60);
+
+		return () => {
+			window.removeEventListener('scroll', onScroll);
+		};
+		
+	}, 1600));
+
+  useEffect(() => throttled.current(hasScrolled, lastScrolled, lastGap), [hasScrolled, lastScrolled, lastGap]);
 
 	return (
 		<NativeHeader hasScrolled={hasScrolled}>
+
 			<LogoWrapper hasScrolled={hasScrolled}>
 				<FootPicture hasScrolled={hasScrolled} src={footOnlyLogo} alt="Foot logo" />
-				<TextPicture hasScrolled={hasScrolled} src={textOnlyLogo} alt="Logo text" />			
+				<TextPicture hasScrolled={hasScrolled} src={textOnlyLogo} alt="Logo text" />
 			</LogoWrapper>
 			
 			<Nav>

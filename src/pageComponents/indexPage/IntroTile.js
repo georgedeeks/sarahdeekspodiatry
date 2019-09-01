@@ -64,8 +64,6 @@ const ContactPlainLink = styled(PlainLink)`
 `;
 
 const BackgroundFootPicture = styled.img`
-	// width: 143px;
-	// height: 140px;
 	top: 30px;
 `;
 
