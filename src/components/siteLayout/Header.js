@@ -134,10 +134,10 @@ const Header = ({pathname}) => {
 			</LogoWrapper>
 			
 			<Nav>
-				<ActiveLink title="Home" pathname={pathname} to="#intro" />
-				<ActiveLink title="About" pathname={pathname} to="#about" />
-				<ActiveLink title="Services" pathname={pathname} to="#services" />
-				<ActiveLink title="Location & Contact" pathname={pathname} to="#location-hours" />
+				<ActiveLink title="Home" pathname={pathname} href="#top" />
+				<ActiveLink title="About" pathname={pathname} href="#about" />
+				<ActiveLink title="Services" pathname={pathname} href="#services" />
+				<ActiveLink title="Location & Contact" pathname={pathname} href="#location-hours" />
 			</Nav>
 		</NativeHeader>
 	);

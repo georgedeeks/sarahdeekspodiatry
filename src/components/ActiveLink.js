@@ -35,11 +35,11 @@ const StyledLink = styled.a`
 	}	
 `;
 
-const ActiveLink = ({pathname, to, title}) => {	
+const ActiveLink = ({pathname, href, title}) => {	
 	return (
 		<StyledLink 
-			to={to}
-			active={(pathname === to).toString()}
+			href={href}
+			active={(pathname === href).toString()}
 		>
 			{title}
 		</StyledLink>	
@@ -48,7 +48,7 @@ const ActiveLink = ({pathname, to, title}) => {
 
 ActiveLink.propTypes = {
 	pathname: PropTypes.string.isRequired,
-	to: PropTypes.string.isRequired,
+	href: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 
 	
