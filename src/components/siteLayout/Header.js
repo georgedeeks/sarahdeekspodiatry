@@ -100,29 +100,16 @@ const Header = ({pathname}) => {
 	const [lastGap, setLastGap] = useState(0);
 
 
-	const throttled = useRef(throttle((hasScrolled, lastScrolled, lastGap) => {
+	const throttled = useRef(throttle((hasScrolled) => {
 
-		var gap = Math.abs(window.pageYOffset - lastScrolled[2]);
 
 		const onScroll = (event) => {
 			const itHasScrolled = window.pageYOffset > 120;
 
-			var gap = Math.abs(window.pageYOffset - lastScrolled[2]);
-
-			setLastGap(gap);
 			if (
 				itHasScrolled !== hasScrolled 
-				&& 
-				window.pageYOffset !== lastScrolled[2]
-				&&
-				gap !== lastGap
-				&&
-				gap > 0
-				&& 
-				window.pageYOffset !== gap
 			) {
 				setHasScrolled(itHasScrolled);
-				setLastScrolled([lastScrolled[0], lastScrolled[1], window.pageYOffset]);
 			}
 		};
 	
@@ -134,9 +121,9 @@ const Header = ({pathname}) => {
 			window.removeEventListener('scroll', onScroll);
 		};
 		
-	}, 1600));
+	}, 1200));
 
-  useEffect(() => throttled.current(hasScrolled, lastScrolled, lastGap), [hasScrolled, lastScrolled, lastGap]);
+  useEffect(() => throttled.current(hasScrolled), [hasScrolled]);
 
 	return (
 		<NativeHeader hasScrolled={hasScrolled}>
