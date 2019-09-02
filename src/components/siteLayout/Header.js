@@ -131,7 +131,7 @@ const Header = ({pathname}) => {
 	const [hasScrolled, setHasScrolled] = React.useState(false);
 
   const onScroll = throttle(() => {
-    setHasScrolled(window.pageYOffset > HEADER_HEIGHT_LARGE);
+    setHasScrolled(window && window.pageYOffset > HEADER_HEIGHT_LARGE);
   });
 
   React.useEffect(() => {
