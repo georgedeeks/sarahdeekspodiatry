@@ -8,32 +8,36 @@ import ActiveLink from "../ActiveLink";
 import footOnlyLogo from "../../images/logo_symbol.png";
 import textOnlyLogo from "../../images/logo_text.png";
 
-const NAV_STICKY_OFFSET = 120;
-const CONDENSED_NAV_STICKY_OFFSET = 60;
+const HEADER_HEIGHT_LARGE = 120;
+const HEADER_HEIGHT_SMALL = 60;
 
 const NativeHeader = styled.header`
-	background-color: white; /* remove */
-
 	position: sticky;
-
+	background: white;
 	left: 0;
   top: 0;
 	width: 100%;
-		
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: flex-end;
+	height: ${HEADER_HEIGHT_SMALL}px;
 
-	height: ${NAV_STICKY_OFFSET}px;
+	transition: height 0.2s ease-in-out;
+
+	@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		height: ${props => props.headerHeight}px;
+	}
 
 	${props => props.hasScrolled && `
 		border-bottom: #7ECDC1 1px solid;
-		height: ${CONDENSED_NAV_STICKY_OFFSET}px;
-		
 	`}
-
-	`;
+`;
 
 const Nav = styled.nav`
 	height: 100%;
@@ -78,68 +82,48 @@ const LogoWrapper = styled.div`
 	height: 100%;
 	width: 100%;
 	align-items: flex-end;
-	
+
 	${props => props.hasScrolled && `
 		align-items: center;
 		justify-content: flex-start;
 	`}
 `;
 
-const StickyHell = styled.div`
-	width: 1px;
-	height: 120px;
-	visibility: hidden;
-`;
-
 const Header = ({pathname}) => {
+	const [hasScrolled, setHasScrolled] = React.useState(false);
 
-	const [hasScrolled, setHasScrolled] = useState(false);
+  const onScroll = throttle(() => {
+    setHasScrolled(window.pageYOffset > HEADER_HEIGHT_LARGE);
+  });
 
-	const [lastScrolled, setLastScrolled] = useState([0, 0, 0]);
+  React.useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    onScroll();
 
-	const [lastGap, setLastGap] = useState(0);
+    return () => window.removeEventListener('scroll', onScroll);
+  });
 
-
-	const throttled = useRef(throttle((hasScrolled) => {
-
-
-		const onScroll = (event) => {
-			const itHasScrolled = window.pageYOffset > 120;
-
-			if (
-				itHasScrolled !== hasScrolled 
-			) {
-				setHasScrolled(itHasScrolled);
-			}
-		};
-	
-		window.addEventListener('scroll', onScroll);
-
-		setHasScrolled(window.pageYOffset > 60);
-
-		return () => {
-			window.removeEventListener('scroll', onScroll);
-		};
-		
-	}, 1200));
-
-  useEffect(() => throttled.current(hasScrolled), [hasScrolled]);
+  const headerHeight = hasScrolled
+    ? HEADER_HEIGHT_SMALL
+    : HEADER_HEIGHT_LARGE;
 
 	return (
-		<NativeHeader hasScrolled={hasScrolled}>
+		<>
+			<NativeHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
 
-			<LogoWrapper hasScrolled={hasScrolled}>
-				<FootPicture hasScrolled={hasScrolled} src={footOnlyLogo} alt="Foot logo" />
-				<TextPicture hasScrolled={hasScrolled} src={textOnlyLogo} alt="Logo text" />
-			</LogoWrapper>
-			
-			<Nav>
-				<ActiveLink title="Home" pathname={pathname} href="#top" />
-				<ActiveLink title="About" pathname={pathname} href="#about" />
-				<ActiveLink title="Services" pathname={pathname} href="#services" />
-				<ActiveLink title="Location & Contact" pathname={pathname} href="#location-hours" />
-			</Nav>
-		</NativeHeader>
+				<LogoWrapper hasScrolled={hasScrolled}>
+					<FootPicture hasScrolled={hasScrolled} src={footOnlyLogo} alt="Foot logo" />
+					<TextPicture hasScrolled={hasScrolled} src={textOnlyLogo} alt="Logo text" />
+				</LogoWrapper>
+
+				<Nav>
+					<ActiveLink title="Home" pathname={pathname} href="#top" />
+					<ActiveLink title="About" pathname={pathname} href="#about" />
+					<ActiveLink title="Services" pathname={pathname} href="#services" />
+					<ActiveLink title="Location & Contact" pathname={pathname} href="#location-hours" />
+				</Nav>
+			</NativeHeader>
+		</>
 	);
 }
 
