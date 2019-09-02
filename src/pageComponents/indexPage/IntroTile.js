@@ -126,11 +126,12 @@ const IntroTileContent = ({isMobile}) => {
 }
 
 const IntroTile = () => {
-	var mq = window.matchMedia( "(max-width: 1050px)" );
-	if (mq.matches) {
-		// window width is at less than 1050px
-		// mq.matches is mobile view
+	var mq = {matches: false};
+	if (typeof window !== `undefined`) {
+		mq = window && window.matchMedia( "(max-width: 1050px)" );
+	}
 
+	if (mq.matches) {
 		return (
 			<MobileWrapper>
 				<IntroTileContent isMobile={mq.matches} />
@@ -138,8 +139,6 @@ const IntroTile = () => {
 		);
 	}
 	else {
-		// window width is greater than 1050px
-
 		return (
 			<Tile background="#EBF0EF" height={586} id="intro">
 		

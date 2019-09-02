@@ -175,7 +175,11 @@ const LocationAndHoursContent = ({isMobile}) => (
 );
 
 const LocationAndHoursTile = () => {
-	var mq = window.matchMedia( "(max-width: 1050px)" );
+	var mq = {matches: false};
+	if (typeof window !== `undefined`) {
+		mq = window && window.matchMedia( "(max-width: 1050px)" );
+	}
+	
 	if (mq.matches) {
 		// window width is at less than 1050px
 		// mq.matches is mobile view

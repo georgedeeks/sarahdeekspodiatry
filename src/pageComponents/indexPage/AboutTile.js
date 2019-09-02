@@ -158,11 +158,12 @@ const AboutContent = ({isMobile}) => (
 )
 
 const AboutTile = () => {
-	var mq = window.matchMedia( "(max-width: 1050px)" );
-	if (mq.matches) {
-		// window width is at less than 1050px
-		// mq.matches is mobile view
+	var mq = {matches: false};
+	if (typeof window !== `undefined`) {
+		mq = window && window.matchMedia( "(max-width: 1050px)" );
+	}
 
+	if (mq.matches) {
 		return (
 			<MobileWrapper id="about">
 				<AboutContent isMobile={mq.matches} />
@@ -170,8 +171,6 @@ const AboutTile = () => {
 		);
 	}
 	else {
-		// window width is greater than 1050px
-
 		return (
 			<Tile height={675} id="about">
 				<AboutContent isMobile={mq.matches} />

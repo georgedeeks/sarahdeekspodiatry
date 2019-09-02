@@ -217,22 +217,19 @@ const MobileFooter = () => {
 };
 
 const Footer = () => {
-	var mq = window.matchMedia( "(max-width: 1050px)" );
-	if (mq.matches) {
-		// window width is at less than 1050px
-		// mq.matches is mobile view
-
-		return (
-			<MobileFooter />
-		);
+	if (typeof window !== `undefined`) {
+		var mq = window && window.matchMedia( "(max-width: 1050px)" );
+		if (mq.matches) {
+			return (
+				<MobileFooter />
+			);
+		}
 	}
-	else {
-		// window width is greater than 1050px
 
-		return (
-			<DesktopFooter />
-		);
-	}
+	return (
+		<DesktopFooter />
+	);
+	
 };
 
 export default Footer;

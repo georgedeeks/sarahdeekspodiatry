@@ -135,28 +135,25 @@ const Header = ({pathname}) => {
   });
 
   React.useEffect(() => {
-    window.addEventListener('scroll', onScroll);
+    window && window.addEventListener('scroll', onScroll);
     onScroll();
 
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => window && window.removeEventListener('scroll', onScroll);
 	});
 	
   var headerHeight = hasScrolled
     ? HEADER_HEIGHT_SMALL
 		: HEADER_HEIGHT_LARGE;
 
-	var mq = window.matchMedia( "(max-width: 1050px)" );
-	if (mq.matches) {
-		// window width is at less than 1050px
-		// mq.matches is mobile view
-	}
-	else {
-		// window width is greater than 1050px
-	}
-		
-	if (mq.matches) {
-		headerHeight = HEADER_HEIGHT_SMALL;
-	}
+	var mq = {matches: false};
+
+	if (typeof window !== `undefined`) {
+		mq = window && window.matchMedia( "(max-width: 1050px)" );
+
+		if (mq.matches) {
+			headerHeight = HEADER_HEIGHT_SMALL;
+		}
+	}	
 
 	if (!mq.matches) {
 		return (
@@ -179,8 +176,11 @@ const Header = ({pathname}) => {
 			</>
 		);
 	} else {
-		var mq2 = window.matchMedia( "(min-width: 620px)" );
-		
+		var mq2 = {matches: false};
+		if (typeof window !== `undefined`) {
+			mq2 = window && window.matchMedia( "(min-width: 620px)" );
+		}
+
 		return (
 			<>
 				<MobileHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
@@ -202,9 +202,7 @@ const Header = ({pathname}) => {
 			</>
 		);
 	}
-}
-
-;
+};
 
 Header.propTypes = {
 	pathname: PropTypes.string.isRequired,
