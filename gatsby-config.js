@@ -11,6 +11,16 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Sarah Deeks Podiatry`,
+        short_name: `SD Podiatry`,
+        start_url: `/`,
+        icon: `src/images/logo_symbol.png`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
   ],
 };

@@ -17,6 +17,7 @@ const FootPicture = styled.img`
   width: auto;
   height: auto;
 	margin-left: 80px;
+	margin-top: 30px;
 `;
 
 const Wrapper = styled.div`
@@ -81,7 +82,7 @@ const IntroTile = () => (
 			<Wrapper>
 
 				<Paragraph>
-					<VerticalSpacing size={30} />
+					<VerticalSpacing size={50} />
 					<p>
 						I run a podiatric clinic on 
 						<b> Friday afternoons </b> in a modern setting on 
@@ -99,8 +100,8 @@ const IntroTile = () => (
 						<TextBlock>
 							<Tel>
 								<Title>Telephone:</Title>
-								<ContactPlainLink href="tel:+447553460729"> 
-									+44(0)7553460729
+								<ContactPlainLink href="tel:+447824159320"> 
+									+44(0)7824159320
 								</ContactPlainLink> 
 							</Tel>
 							<Contact>

@@ -118,53 +118,70 @@ const ContactType = styled.span`
 	opacity: 0.75;
 `;
 
-const Footer = () => 
-	<NativeFooter>
+const Footer = () => {
+
+	var mq = window.matchMedia( "(max-width: 1050px)" );
+	if (mq.matches) {
+		// window width is at less than 1050px
+	
+		return <React.Fragment />;
+
+		// mq.matches is mobile view
+	}
+	else {
+		// window width is greater than 1050px
+	
+		//
+	}
+
+	return (
+		<NativeFooter>
 		
-		<BackgroundContainer>
-			<FootPicture src={footOnlyLogo} alt="Foot logo" />
-		</BackgroundContainer>
-		
-		<ContentContainer>
-				
-				<LogoContainer>
+			<BackgroundContainer>
+				<FootPicture src={footOnlyLogo} alt="Foot logo" />
+			</BackgroundContainer>
+			
+			<ContentContainer>
+					
+					<LogoContainer>
 
-					<PictureFrameLeft>
-						<SPACPicture src={socPandCLogo} alt="SPAC logo" />
-					</PictureFrameLeft>
+						<PictureFrameLeft>
+							<SPACPicture src={socPandCLogo} alt="SPAC logo" />
+						</PictureFrameLeft>
 
-					<TextBlock>
-						<Title>Sarah Deeks Podiatry</Title>
-						<div>
-							<ContactType>Tel: </ContactType>
-							<ContactPlainLink href="tel:+447553460729"> 
-								+44(0)7553460729
-							</ContactPlainLink>
-						</div>						
-						<div>
-							<ContactType>Email: </ContactType> 							
-							<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
-								sarahjdeeks@gmail.com
-							</ContactPlainLink>
-						</div>
-					</TextBlock>
+						<TextBlock>
+							<Title>Sarah Deeks Podiatry</Title>
+							<div>
+								<ContactType>Tel: </ContactType>
+								<ContactPlainLink href="tel:+447824159320"> 
+									+44(0)7824159320
+								</ContactPlainLink>
+							</div>						
+							<div>
+								<ContactType>Email: </ContactType> 							
+								<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
+									sarahjdeeks@gmail.com
+								</ContactPlainLink>
+							</div>
+						</TextBlock>
 
-					<PictureFrameRight>
-						<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
-					</PictureFrameRight>
+						<PictureFrameRight>
+							<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
+						</PictureFrameRight>
 
-				</LogoContainer>
+					</LogoContainer>
 
-			<Copyright>
-				Copyright © George Deeks 2019
-				{new Date().getFullYear() > 2019 && (
-					' ‒ ' + new Date().getFullYear()
-				)}
-			</Copyright>
+				<Copyright>
+					Copyright © George Deeks 2019
+					{new Date().getFullYear() > 2019 && (
+						' ‒ ' + new Date().getFullYear()
+					)}
+				</Copyright>
 
-		</ContentContainer>
+			</ContentContainer>
 
-	</NativeFooter>
-;
+		</NativeFooter>
+	);
+};
 
 export default Footer;

@@ -33,13 +33,18 @@ const StyledLink = styled.a`
 		border-bottom: 4px solid purple;
 		height: 37px;
 	}	
+
+	${props => props.services && props.services === 'true' && `
+    margin-right: 2.5rem;
+	`}
 `;
 
-const ActiveLink = ({pathname, href, title}) => {	
+const ActiveLink = ({pathname, href, title, services}) => {	
 	return (
 		<StyledLink 
 			href={href}
 			active={(pathname === href).toString()}
+			services={services}
 		>
 			{title}
 		</StyledLink>	
@@ -50,7 +55,7 @@ ActiveLink.propTypes = {
 	pathname: PropTypes.string.isRequired,
 	href: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-
+	services: PropTypes.string.isRequired,
 	
 };
 
