@@ -37,6 +37,20 @@ const StyledLink = styled.a`
 	${props => props.services && props.services === 'true' && `
     margin-right: 2.5rem;
 	`}
+
+	/* MOBILE */
+	@media (max-width: 620px)  {
+		text-decoration: none;
+		margin-right: 0.5rem;	
+		height: 12px;
+		min-width: 52px;
+		color: #646464;
+		font-family: Arial;
+		font-size: 10px;
+		font-weight: bold;
+		line-height: 12px;
+		text-align: center;
+	}
 `;
 
 const ActiveLink = ({pathname, href, title, services}) => {	

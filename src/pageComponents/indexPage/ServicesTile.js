@@ -141,65 +141,156 @@ const List = styled.ul`
 
 	`;
 
+const MobileHeading = styled.h2`
+	color: #646464;
+	font-weight: bold;
+	font-size: 42px;
+	font-family: Arial;
+	margin: 0 0 50px 0;
+`;
+
 // TODO do i need ant-row installed?
+const MobileWrapper = styled.div`
+	background: #EDEAF2;
 
-const ServicesTile = () => (
-	<Tile height={860} background="#EDEAF2" id="services">
-		<Wrapper>
-			<Heading>
-				Services
-			</Heading>
+	height: 1470px;
+	width: 100%;
+	flex-direction: column;
 	
-			<Container>
-				<FlexDirectionRow>
-					<TopServiceSquare>
-							<Title>Routine assessment and treatment</Title>
-							<Divider />
-							<List>
-								<ExplanationPoint>Toenail cutting</ExplanationPoint>
-								<ExplanationPoint>Callous removal</ExplanationPoint>			
-								<ExplanationPoint>General advice, including for fungal nails</ExplanationPoint>	
-							</List>							
-							<Price>£45.00</Price>
-					</TopServiceSquare>
+	padding-top: 30px;
+`;
 
-					<TopServiceSquare>
-						<Title>Biomechanical assessment </Title>
-						<Divider />
-						<ExplanationText>
-							An examination of the lower limbs, looking at their structure, 
-							alignment, strengths and weaknesses
-						</ExplanationText>
-						<Price>£80.00</Price>
-					</TopServiceSquare>
-				</FlexDirectionRow>
+const MobileContainer = styled(Container)``;
+const MobileSquare = styled(ServiceSquare)`
+	margin: 10px;
+`;
+
+const SquareOne = () => (
+	<React.Fragment>
+		<Title>Routine assessment and treatment</Title>
+		<Divider />
+		<List>
+			<ExplanationPoint>Toenail cutting</ExplanationPoint>
+			<ExplanationPoint>Callous removal</ExplanationPoint>			
+			<ExplanationPoint>General advice, including for fungal nails</ExplanationPoint>	
+		</List>							
+		<Price>£45.00</Price>
+	</React.Fragment>
+);
+
+const SquareTwo = () => (
+	<React.Fragment>
+		<Title>Biomechanical assessment </Title>
+		<Divider />
+		<ExplanationText>
+			An examination of the lower limbs, looking at their structure, 
+			alignment, strengths and weaknesses
+		</ExplanationText>
+		<Price>£80.00</Price>
+	</React.Fragment>
+);
+
+const SquareThree = () => (
+	<React.Fragment>
+		<Title>Initial consultation</Title>
+		<SpecialDivider />
+		<SpecialBottomExplanationText>
+			A short meeting, 15 minutes if required, to assess foot health and treatment plan.
+		</SpecialBottomExplanationText>
+		<Price>£20</Price>
+	</React.Fragment>
+);
+
+const SquareFour = () => (
+	<React.Fragment>
+		<Title>Custom-made orthotics</Title>
+		<Divider />
+		<BottomExplanationText>
+			Follows biomechanical assessment
+		</BottomExplanationText>
+		<Price>£ varies</Price>
+	</React.Fragment>
+);
+
+const ServicesContent = ({isMobile}) => (
+	<React.Fragment>
+		<Wrapper>
+			{isMobile ? (
+				<MobileHeading>Services</MobileHeading>
+			) : (
+				<Heading>Services</Heading>
+			)}
+
+			{isMobile ? (
+				<MobileContainer>
+					<MobileSquare>
+						<SquareOne />
+					</MobileSquare>
+
+					<MobileSquare>
+						<SquareTwo />
+					</MobileSquare>
+
+					<MobileSquare>
+						<SquareThree />
+					</MobileSquare>
+
+					<MobileSquare>
+						<SquareFour />
+					</MobileSquare>
+				</MobileContainer>
+			) : (
+				<Container>
+					<FlexDirectionRow>
+						<TopServiceSquare>
+							<SquareOne />
+						</TopServiceSquare>
+
+						<TopServiceSquare>
+							<SquareTwo />
+						</TopServiceSquare>
+					</FlexDirectionRow>
+					
+					<FlexDirectionRow>
+						
+						<BottomServiceSquare>
+							<SquareThree />
+						</BottomServiceSquare>
+						
+						<BottomServiceSquare>
+							<SquareFour />
+						</BottomServiceSquare>
+
+					</FlexDirectionRow>
+				</Container>
+			)}
 				
-				<FlexDirectionRow>
-					
-					<BottomServiceSquare>
-						<Title>Initial consultation</Title>
-						<SpecialDivider />
-						<SpecialBottomExplanationText>
-							A short meeting, 15 minutes if required, to assess foot health and treatment plan.
-						</SpecialBottomExplanationText>
-						<Price>£20</Price>
-					</BottomServiceSquare>
-					
-					<BottomServiceSquare>
-						<Title>Custom-made orthotics</Title>
-						<Divider />
-						<BottomExplanationText>
-							Follows biomechanical assessment
-						</BottomExplanationText>
-						<Price>£ varies</Price>
-					</BottomServiceSquare>
-
-				</FlexDirectionRow>
-			</Container>	
-
 			<VerticalSpacing size={1} />
 		</Wrapper>
-	</Tile>	
+	</React.Fragment>	
 );
+
+const ServicesTile = () => {
+	var mq = window.matchMedia( "(max-width: 1050px)" );
+	if (mq.matches) {
+		// window width is at less than 1050px
+		// mq.matches is mobile view
+
+		return (
+			<MobileWrapper id="services">
+				<ServicesContent isMobile={mq.matches} />
+			</MobileWrapper>
+		);
+	}
+	else {
+		// window width is greater than 1050px
+
+		return (
+			<Tile height={900} background="#EDEAF2" id="services">
+				<ServicesContent isMobile={mq.matches} />
+			</Tile>
+		);
+	}
+};
 
 export default ServicesTile;

@@ -8,6 +8,13 @@ const StyledParagraph = styled.div`
 	line-height: 24px;
 	max-width: 500px;
 	min-width: 500px;
+
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		max-width: 90%;
+		min-width: 90%;
+		padding: 0 0rem 0 1rem;
+	}
 `;
 
 const Paragraph = ({children}) => {

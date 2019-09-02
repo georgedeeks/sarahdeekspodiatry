@@ -15,6 +15,12 @@ import VerticalSpacing from "../../components/VerticalSpacing";
 
 const Writing = styled.div`
 	padding-top: 135px;
+
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		padding-top: 20px;
+	}
+
 `;
 
 const SarahPic = styled.img`
@@ -23,11 +29,22 @@ const SarahPic = styled.img`
 	max-height: 400px;
 	max-width: 300px;
 	padding-bottom: 15px;
+
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		padding: 0;
+	}
 `;
 
 const PicsWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
+
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		align-items: center;
+		justify-content: center;
+	}
 `;
 
 const LogosWrapper = styled.div`
@@ -36,6 +53,13 @@ const LogosWrapper = styled.div`
 	justify-content: space-between;
 	width: 380px;
 
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		width: 300px;
+		align-items: center;
+		padding-top: 5px;
+	}
+
 `;
 
 const HCPCPicture = styled.img`
@@ -43,6 +67,10 @@ const HCPCPicture = styled.img`
 	padding: 15px;
 	padding-right: 480px;
 
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		padding: 15px;
+	}
 `;
 
 const SPACPicture = styled.img`
@@ -53,8 +81,27 @@ const BackgroundFootPicture = styled.img`
 	top: 30px;
 `;
 
-const AboutTile = () => (
-	<Tile height={675} id="about">
+const MobileWrapper = styled.div`
+	background: white;
+	height: 1200px;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-top: 30px;
+`;
+
+
+
+const AboutContent = ({isMobile}) => (
+	<React.Fragment>
+
+		{isMobile && (
+			<Heading>
+				About
+			</Heading>
+		)}
+
 		<PicsWrapper>
 			<SarahPic src={blueSarah} alt="Picture of Sarah" />
 			<LogosWrapper>
@@ -62,11 +109,13 @@ const AboutTile = () => (
 				<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
 			</LogosWrapper>
 		</PicsWrapper>
-		
+
 		<Writing>
-			<Heading>
-				About
-			</Heading>
+			{!isMobile && (
+				<Heading>
+					About
+				</Heading>
+			)}			
 
 			<Paragraph>
 				<p>
@@ -105,9 +154,30 @@ const AboutTile = () => (
 			<BackgroundFootPicture src={footprintTopLeftFoot} alt="Background image of foot" />
 
 		</Writing>
+	</React.Fragment>
+)
 
+const AboutTile = () => {
+	var mq = window.matchMedia( "(max-width: 1050px)" );
+	if (mq.matches) {
+		// window width is at less than 1050px
+		// mq.matches is mobile view
 
-	</Tile>	
-);
+		return (
+			<MobileWrapper id="about">
+				<AboutContent isMobile={mq.matches} />
+			</MobileWrapper>
+		);
+	}
+	else {
+		// window width is greater than 1050px
+
+		return (
+			<Tile height={675} id="about">
+				<AboutContent isMobile={mq.matches} />
+			</Tile>
+		);
+	}
+};
 
 export default AboutTile;

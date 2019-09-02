@@ -34,6 +34,11 @@ const FootPicture = styled.img`
 	top: -48px;
 	
 	position: relative;
+
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		top: 10px;
+	}
 `;
 
 const BackgroundContainer = styled.div`
@@ -86,7 +91,10 @@ const TextBlock = styled.div`
 	align-items: center;
 	flex: 1;
 
-
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		padding-top: 3.5rem;
+	}
 `;
 
 const PictureFrameLeft = styled.div`
@@ -118,22 +126,7 @@ const ContactType = styled.span`
 	opacity: 0.75;
 `;
 
-const Footer = () => {
-
-	var mq = window.matchMedia( "(max-width: 1050px)" );
-	if (mq.matches) {
-		// window width is at less than 1050px
-	
-		return <React.Fragment />;
-
-		// mq.matches is mobile view
-	}
-	else {
-		// window width is greater than 1050px
-	
-		//
-	}
-
+const DesktopFooter = () => {
 	return (
 		<NativeFooter>
 		
@@ -182,6 +175,64 @@ const Footer = () => {
 
 		</NativeFooter>
 	);
+};
+
+const MobileFooter = () => {
+	return (
+		<NativeFooter>
+		
+			<BackgroundContainer>
+				<FootPicture src={footOnlyLogo} alt="Foot logo" />
+			</BackgroundContainer>
+			
+			<ContentContainer>
+				
+				<TextBlock>
+					<Title>Sarah Deeks Podiatry</Title>
+					<div>
+						<ContactType>Tel: </ContactType>
+						<ContactPlainLink href="tel:+447824159320"> 
+							+44(0)7824159320
+						</ContactPlainLink>
+					</div>						
+					<div>
+						<ContactType>Email: </ContactType> 							
+						<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
+							sarahjdeeks@gmail.com
+						</ContactPlainLink>
+					</div>
+				</TextBlock>
+
+				<Copyright>
+					Copyright © George Deeks 2019
+					{new Date().getFullYear() > 2019 && (
+						' ‒ ' + new Date().getFullYear()
+					)}
+				</Copyright>
+
+			</ContentContainer>
+
+		</NativeFooter>
+	);
+};
+
+const Footer = () => {
+	var mq = window.matchMedia( "(max-width: 1050px)" );
+	if (mq.matches) {
+		// window width is at less than 1050px
+		// mq.matches is mobile view
+
+		return (
+			<MobileFooter />
+		);
+	}
+	else {
+		// window width is greater than 1050px
+
+		return (
+			<DesktopFooter />
+		);
+	}
 };
 
 export default Footer;

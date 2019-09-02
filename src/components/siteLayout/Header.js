@@ -29,17 +29,19 @@ const NativeHeader = styled.header`
 		border-bottom: #7ECDC1 1px solid;
 	`}
 `;
-/*
-	MOBILE
-	@media (max-width:1050px)  {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		z-index: 10;
-		height: ${props => props.headerHeight}px;
-	}
-*/
+
+const MobileHeader = styled.header`
+	position: relative;
+	background: white;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+	height: ${HEADER_HEIGHT_SMALL}px;
+	border-bottom: #7ECDC1 2px solid;
+
+`;
 
 const Nav = styled.nav`
 	height: 100%;
@@ -120,11 +122,16 @@ const LogoWrapper = styled.div`
 	`}
 `;
 
+const MobileNav = styled.nav`
+	font-size: 12px;
+	padding-bottom: 1rem;
+`;
+
 const Header = ({pathname}) => {
 	const [hasScrolled, setHasScrolled] = React.useState(false);
 
   const onScroll = throttle(() => {
-    setHasScrolled(window.pageYOffset > HEADER_HEIGHT_SMALL);
+    setHasScrolled(window.pageYOffset > HEADER_HEIGHT_LARGE);
   });
 
   React.useEffect(() => {
@@ -134,47 +141,67 @@ const Header = ({pathname}) => {
     return () => window.removeEventListener('scroll', onScroll);
 	});
 	
+  var headerHeight = hasScrolled
+    ? HEADER_HEIGHT_SMALL
+		: HEADER_HEIGHT_LARGE;
+
 	var mq = window.matchMedia( "(max-width: 1050px)" );
 	if (mq.matches) {
 		// window width is at less than 1050px
-	
 		// mq.matches is mobile view
 	}
 	else {
 		// window width is greater than 1050px
-	
-		//
 	}
-
-  var headerHeight = hasScrolled
-    ? HEADER_HEIGHT_SMALL
-		: HEADER_HEIGHT_LARGE;
 		
 	if (mq.matches) {
 		headerHeight = HEADER_HEIGHT_SMALL;
 	}
 
-	console.log(headerHeight)
+	if (!mq.matches) {
+		return (
+			<>
+				<NativeHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
+	
+					<LogoWrapper hasScrolled={mq.matches || hasScrolled}>
+						<FootPicture hasScrolled={mq.matches || hasScrolled} src={footOnlyLogo} alt="Foot logo" />
+						<TextPicture hasScrolled={mq.matches || hasScrolled} src={textOnlyLogo} alt="Logo text" />
+					</LogoWrapper>
+	
+					<Nav>
+						<ActiveLink services="false" title="Home" pathname={pathname} href="#top" />
+						<ActiveLink services="false" title="About" pathname={pathname} href="#about" />
+						<ActiveLink services="true" title="Services" pathname={pathname} href="#services" />
+						<ActiveLink services="false" title="Location & Contact" pathname={pathname} href="#location-hours" />
+					</Nav>
+	
+				</NativeHeader>
+			</>
+		);
+	} else {
+		var mq2 = window.matchMedia( "(min-width: 620px)" );
+		
+		return (
+			<>
+				<MobileHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
+	
+					<LogoWrapper hasScrolled={mq.matches || hasScrolled}>
+						<FootPicture hasScrolled={mq.matches || hasScrolled} src={footOnlyLogo} alt="Foot logo" />
+						<TextPicture hasScrolled={mq.matches || hasScrolled} src={textOnlyLogo} alt="Logo text" />
+					</LogoWrapper>
 
-	return (
-		<>
-			<NativeHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
-
-				<LogoWrapper hasScrolled={mq.matches || hasScrolled}>
-					<FootPicture hasScrolled={mq.matches || hasScrolled} src={footOnlyLogo} alt="Foot logo" />
-					{!mq.matches && <TextPicture hasScrolled={mq.matches || hasScrolled} src={textOnlyLogo} alt="Logo text" />}
-				</LogoWrapper>
-
-				<Nav>
-					<ActiveLink services="false" title="Home" pathname={pathname} href="#top" />
-					<ActiveLink services="false" title="About" pathname={pathname} href="#about" />
-					<ActiveLink services="true" title="Services" pathname={pathname} href="#services" />
-					<ActiveLink services="false" title="Location & Contact" pathname={pathname} href="#location-hours" />
-				</Nav>
-
-			</NativeHeader>
-		</>
-	);
+					{mq2.matches && (
+						<MobileNav>
+							<ActiveLink services="false" title="About" pathname={pathname} href="#about" />
+							<ActiveLink services="false" title="Services" pathname={pathname} href="#services" />
+							<ActiveLink services="false" title="Location & Contact" pathname={pathname} href="#location-hours" />
+						</MobileNav>
+					)}					
+		
+				</MobileHeader>
+			</>
+		);
+	}
 }
 
 ;

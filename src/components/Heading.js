@@ -8,6 +8,11 @@ const StyledHeading = styled.h2`
 	font-size: 42px;
 	font-family: Arial;
 	margin: 0 0 50px 0;
+
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		margin: 0 0 1em 1em;
+	}
 `;
 
 const Heading = ({children}) => {

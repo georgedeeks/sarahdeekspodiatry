@@ -7,6 +7,4 @@ body {
   /* margin-bottom = footer height */
   margin: 0 0 261px 0;
 
-  /* Give app full page to work with */
-  height: 100vh;
 }

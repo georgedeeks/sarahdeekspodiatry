@@ -73,57 +73,92 @@ const BackgroundWrapper = styled.div`
 	flex-direction: column;
 `;
 
-const IntroTile = () => (
-	<Tile background="#EBF0EF" height={586} id="intro">
+const MobileWrapper = styled.div`
+	background: #EBF0EF;
+	height: 400px;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 50px;
+`;
+
+const IntroTileContent = ({isMobile}) => {
+	return (
+		<React.Fragment>
+			<Paragraph>
+				<VerticalSpacing size={isMobile ? 30 : 50} />
+				<p>
+					I run a podiatric clinic on 
+					<b> Friday afternoons </b> in a modern setting on 
+					<b> Finchley Road</b>, West London.
+				</p>
+				<p>
+					I am a HCPC-certified podiatrist with over 5 years' experience working across London, 
+					and offer a range of services.
+				</p>
+				<p>
+					Get in touch today to make an appointment&hellip;
+					
+				</p>
+				<p>
+					<TextBlock>
+						<Tel>
+							<Title>Telephone:</Title>
+							<ContactPlainLink href="tel:+447824159320"> 
+								+44(0)7824159320
+							</ContactPlainLink> 
+						</Tel>
+						<Contact>
+							<Title>Email:</Title>
+							<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
+								sarahjdeeks@gmail.com
+							</ContactPlainLink>
+						</Contact>
+					</TextBlock>
+				</p>
+			</Paragraph>
+
+			{!isMobile && <FootPicture src={feetOnRock} alt="Picture of feet" />}
+		</React.Fragment>
+	);
+
+}
+
+const IntroTile = () => {
+	var mq = window.matchMedia( "(max-width: 1050px)" );
+	if (mq.matches) {
+		// window width is at less than 1050px
+		// mq.matches is mobile view
+
+		return (
+			<MobileWrapper>
+				<IntroTileContent isMobile={mq.matches} />
+			</MobileWrapper>
+		);
+	}
+	else {
+		// window width is greater than 1050px
+
+		return (
+			<Tile background="#EBF0EF" height={586} id="intro">
 		
-		<BackgroundWrapper>
-
-
-			<Wrapper>
-
-				<Paragraph>
-					<VerticalSpacing size={50} />
-					<p>
-						I run a podiatric clinic on 
-						<b> Friday afternoons </b> in a modern setting on 
-						<b> Finchley Road</b>, West London.
-					</p>
-					<p>
-						I am a HCPC-certified podiatrist with over 5 years' experience working across London, 
-						and offer a range of services.
-					</p>
-					<p>
-						Get in touch today to make an appointment&hellip;
-						
-					</p>
-					<p>
-						<TextBlock>
-							<Tel>
-								<Title>Telephone:</Title>
-								<ContactPlainLink href="tel:+447824159320"> 
-									+44(0)7824159320
-								</ContactPlainLink> 
-							</Tel>
-							<Contact>
-								<Title>Email:</Title>
-								<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
-									sarahjdeeks@gmail.com
-								</ContactPlainLink>
-							</Contact>
-						</TextBlock>
-					</p>
-				</Paragraph>
-
-				<FootPicture src={feetOnRock} alt="Picture of feet" />
-
-			</Wrapper>
-
-			<BackgroundFootPicture src={footprintTopRightFoot} alt="Background image of foot" />
-
-		</BackgroundWrapper>
-
-
-	</Tile>	
-);
+			<BackgroundWrapper>
+		
+				<Wrapper>
+	
+					<IntroTileContent />
+	
+				</Wrapper>
+	
+				<BackgroundFootPicture src={footprintTopRightFoot} alt="Background image of foot" />
+	
+			</BackgroundWrapper>
+	
+	
+			</Tile>	
+		);
+	}
+};
 
 export default IntroTile;
