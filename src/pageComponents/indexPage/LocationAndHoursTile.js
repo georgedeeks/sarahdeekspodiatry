@@ -12,7 +12,7 @@ const ContentWrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 900px;
+	width: 65%;
 
 	/* MOBILE */
 	@media (max-width:1050px)  {
@@ -41,7 +41,7 @@ const InfoWrapper = styled.div`
 		margin: 0;
 		padding: 0 1rem 3rem 1rem;
 		width: 90%;
-		height: 10rem;
+		height: 12rem;
 	}
 `;
 
@@ -84,9 +84,16 @@ const FootPicture = styled.img`
 `;
 
 const SmallText = styled.div`
-	font-size: 14px;
 	font-style: italic;
 	margin-left: 0.5rem;
+	font-size: 12px;
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		font-size: 14px;
+		margin-left: 0.5rem;
+
+	}	
 `;
 
 const Building = styled.div`
@@ -95,7 +102,7 @@ const Building = styled.div`
 	justify-content: flex-start;
 `;
 
-const MobileWrapper = styled.div`
+const LocationWrapper = styled.div`
 	height: 800px;
 	width: 100%;
 	display: flex;
@@ -103,102 +110,75 @@ const MobileWrapper = styled.div`
 	justify-content: center;
 	flex-direction: column;	
 	padding-top: 30px;
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		height: 834px;
+		justify-content: flex-start;
+	}	
 `;
 
 const SpecialDiv = styled.div`
 	margin-bottom: 1rem;
 `;
 
-const LocationAndHoursContent = ({isMobile}) => (
-	<React.Fragment>
-		<ContentWrapper>
-			<Heading>
-				Location & Hours
-			</Heading>
+const Address = styled.div`
+	display: flex;
+	flex-direction: column;
 
-			<InfoWrapper>
-				<Location>
-					<Building>
-						<PlainLink href="https://healthspace307.com/" target="_blank">
-							<Bold>Health Space 307</Bold>
-						</PlainLink>
-						<SmallText>(link opens in a new window)</SmallText>
-					</Building>
-					{isMobile ? (
-						<React.Fragment>
-							<div>307 Regents Park Rd</div>
-							<SpecialDiv>Finchley, London N3 1DP</SpecialDiv>
-						</React.Fragment>
-					) : (
-						<div>307 Regents Park Rd, Finchley, London N3 1DP</div>
-					)}
-				</Location>
-
-				<Times>
-					<div>
-						Monday-Thursday <b>CLOSED</b>
-					</div>
-					<Purple>
-						Friday <b>12:00 – 18:00</b>
-					</Purple>
-				</Times>
-			</InfoWrapper>
-
-			{isMobile ? (
-				<iframe 
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.302179388684!2d-0.1985182842266448!3d51.599351579650374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487617521178e1cb%3A0x691313c53747e04d!2sFinchley+Osteopathy+Clinic!5e0!3m2!1sen!2suk!4v1565564708951!5m2!1sen!2suk" 
-					width="90%" 
-					height="45%" 
-					frameBorder="0" 
-					style={{"border" : "0"}}
-					allowFullScreen
-					title="google-maps"
-				/>
-			) : (
-				<iframe 
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.302179388684!2d-0.1985182842266448!3d51.599351579650374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487617521178e1cb%3A0x691313c53747e04d!2sFinchley+Osteopathy+Clinic!5e0!3m2!1sen!2suk!4v1565564708951!5m2!1sen!2suk" 
-					width="900" 
-					height="450" 
-					frameBorder="0" 
-					style={{"border" : "0"}}
-					allowFullScreen
-					title="google-maps"
-				/>
-			)}
-			
-
-			<FootPicture src={footOnlyLogo} alt="Foot logo" />
-
-		</ContentWrapper>
-	
-	</React.Fragment>	
-);
+	/* desktop */
+	@media (min-width: 1050px)  {
+		flex-direction: row;
+	}	
+`;
 
 const LocationAndHoursTile = () => {
-	var mq = {matches: false};
-	if (typeof window !== `undefined`) {
-		mq = window && window.matchMedia( "(max-width: 1050px)" );
-	}
-	
-	if (mq.matches) {
-		// window width is at less than 1050px
-		// mq.matches is mobile view
+	return (
+		<LocationWrapper id="location-hours">
+			<ContentWrapper>
+				<Heading>
+					Location & Hours
+				</Heading>
 
-		return (
-			<MobileWrapper id="location-hours">
-				<LocationAndHoursContent isMobile={mq.matches} />
-			</MobileWrapper>
-		);
-	}
-	else {
-		// window width is greater than 1050px
+				<InfoWrapper>
+					<Location>
+						<Building>
+							<PlainLink href="https://healthspace307.com/" target="_blank">
+								<Bold>Health Space 307</Bold>
+							</PlainLink>
+							<SmallText>(link opens in a new window)</SmallText>
+						</Building>
+						<Address>
+							<div>307 Regents Park Rd{' '}</div>
+							<SpecialDiv>Finchley, London N3 1DP</SpecialDiv>
+							</Address>
+					</Location>
 
-		return (
-			<Tile height={834} id="location-hours">
-				<LocationAndHoursContent isMobile={mq.matches} />
-			</Tile>
-		);
-	}
+					<Times>
+						<div>
+							Monday-Thursday <b>CLOSED</b>
+						</div>
+						<Purple>
+							Friday <b>12:00 – 18:00</b>
+						</Purple>
+					</Times>
+				</InfoWrapper>
+
+				<iframe 
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.302179388684!2d-0.1985182842266448!3d51.599351579650374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487617521178e1cb%3A0x691313c53747e04d!2sFinchley+Osteopathy+Clinic!5e0!3m2!1sen!2suk!4v1565564708951!5m2!1sen!2suk" 
+					width="95%" 
+					height="550px" 
+					frameBorder="0" 
+					style={{"border" : "0"}}
+					allowFullScreen
+					title="google-maps"
+				/>
+				
+				<FootPicture src={footOnlyLogo} alt="Foot logo" />
+
+			</ContentWrapper>
+		</LocationWrapper>
+	);
 };
 
 export default LocationAndHoursTile;
