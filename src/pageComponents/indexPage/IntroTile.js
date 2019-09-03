@@ -11,19 +11,30 @@ import Paragraph from '../../components/Paragraph';
 import VerticalSpacing from '../../components/VerticalSpacing';
 
 const FootPicture = styled.img`
-  display: block;
-  max-width:660px;
-  max-height:320px;
-  width: auto;
-  height: auto;
-	margin-left: 80px;
-	margin-top: 30px;
+	/* mobile first */
+	visibility: hidden;
+	
+	@media (min-width: 1050px)  {
+		display: block;
+		max-width:660px;
+		max-height:320px;
+		width: auto;
+		height: auto;
+		margin-left: 5%;
+		margin-top: 30px;
+		visibility: visible;
+	}		
 `;
 
 const Wrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-	margin-top: 90px;
+	/* mobile first */
+	
+
+	@media (min-width: 1050px)  {
+		display: flex;
+		flex-direction: row;
+		margin-top: 90px;
+	}
 `;
 
 const TextBlock = styled.span`
@@ -65,99 +76,91 @@ const ContactPlainLink = styled(PlainLink)`
 `;
 
 const BackgroundFootPicture = styled.img`
-	top: 30px;
+/* mobile first */
+	visibility: hidden;
+	
+	@media (min-width: 1050px)  {
+		top: 30px;
+		visibility: visible;
+	}	
 `;
 
-const BackgroundWrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-`;
+const IntroWrapper = styled.div`
 
-const MobileWrapper = styled.div`
+	/* mobile first */
 	background: #EBF0EF;
 	height: 400px;
-	width: 100%;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding-bottom: 50px;
+	display: relative;
+	width: 100%;
+
+	
+	@media (min-width: 1050px)  {
+		display: flex;
+		justify-content: center;
+		height: 586px;
+		display: inline-grid;		
+
+			
+	}
 `;
 
-const IntroTileContent = ({isMobile}) => {
-	return (
-		<React.Fragment>
-			<Paragraph>
-				<VerticalSpacing size={isMobile ? 30 : 50} />
-				<p>
-					I run a podiatric clinic on 
-					<b> Friday afternoons </b> in a modern setting on 
-					<b> Finchley Road</b>, West London.
-				</p>
-				<p>
-					I am a HCPC-certified podiatrist with over 5 years' experience working across London, 
-					and offer a range of services.
-				</p>
-				<p>
-					Get in touch today to make an appointment&hellip;
-					
-				</p>
-				<p>
-					<TextBlock>
-						<Tel>
-							<Title>Telephone:</Title>
-							<ContactPlainLink href="tel:+447824159320"> 
-								+44(0)7824159320
-							</ContactPlainLink> 
-						</Tel>
-						<Contact>
-							<Title>Email:</Title>
-							<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
-								sarahjdeeks@gmail.com
-							</ContactPlainLink>
-						</Contact>
-					</TextBlock>
-				</p>
-			</Paragraph>
+const VerticalSpacingDiv = styled.div`
+	height: 30px;
 
-			{!isMobile && <FootPicture src={feetOnRock} alt="Picture of feet" />}
-		</React.Fragment>
-	);
-
-}
+	@media (min-width: 1050px)  {
+		height: 50px;			
+	}
+`;
 
 const IntroTile = () => {
-	var mq = {matches: false};
-	if (typeof window !== `undefined`) {
-		mq = window && window.matchMedia( "(max-width: 1050px)" );
-	}
+	return (
+		<IntroWrapper id="intro">
 
-	if (mq.matches) {
-		return (
-			<MobileWrapper>
-				<IntroTileContent isMobile={mq.matches} />
-			</MobileWrapper>
-		);
-	}
-	else {
-		return (
-			<Tile background="#EBF0EF" height={586} id="intro">
-		
-			<BackgroundWrapper>
-		
-				<Wrapper>
-	
-					<IntroTileContent />
-	
-				</Wrapper>
-	
-				<BackgroundFootPicture src={footprintTopRightFoot} alt="Background image of foot" />
-	
-			</BackgroundWrapper>
-	
-	
-			</Tile>	
-		);
-	}
+			<Wrapper>
+				<Paragraph>
+					<VerticalSpacingDiv />
+					<p>
+						I run a podiatric clinic on 
+						<b> Friday afternoons </b> in a modern setting on 
+						<b> Finchley Road</b>, West London.
+					</p>
+					<p>
+						I am a HCPC-certified podiatrist with over 5 years' experience working across London, 
+						and offer a range of services.
+					</p>
+					<p>
+						Get in touch today to make an appointment&hellip;
+						
+					</p>
+					<p>
+						<TextBlock>
+							<Tel>
+								<Title>Telephone:</Title>
+								<ContactPlainLink href="tel:+447824159320"> 
+									+44(0)7824159320
+								</ContactPlainLink> 
+							</Tel>
+							<Contact>
+								<Title>Email:</Title>
+								<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
+									sarahjdeeks@gmail.com
+								</ContactPlainLink>
+							</Contact>
+						</TextBlock>
+					</p>
+				</Paragraph>
+
+				<FootPicture src={feetOnRock} alt="Picture of feet" />
+			</Wrapper>
+
+			<BackgroundFootPicture src={footprintTopRightFoot} alt="Background image of foot" />
+
+		</IntroWrapper>
+	);
 };
 
 export default IntroTile;

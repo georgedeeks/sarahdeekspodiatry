@@ -21,7 +21,10 @@ const NativeHeader = styled.header`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: flex-end;
-	height: ${props => props.headerHeight}px;
+
+
+
+	height: ${props => props.hasScrolled ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE}px;
 
 	transition: height 0.1s ease-in-out;
 
@@ -51,6 +54,7 @@ const Nav = styled.nav`
 		display: flex;
 		align-items: flex-end;
 		margin-right: 2%;
+		visibility: hidden; /* TODO change back */
 
 		/* just middle view */
 		font-size: 12px;
@@ -61,6 +65,8 @@ const Nav = styled.nav`
 		/* undo middle view */
 		font-size: 18px;
 		padding-bottom: 0;		
+
+		visibility: visible;
 	}
 
 `;
@@ -139,10 +145,13 @@ const LogoWrapper = styled.div`
 
 const Header = ({pathname}) => {
 	const [hasScrolled, setHasScrolled] = React.useState(false);
+	const [pageYOffset, setPageYOffset] = React.useState(0);
+
 
   const onScroll = throttle(() => {
     setHasScrolled(window.pageYOffset > 60);
-  });
+    setPageYOffset(window.pageYOffset);
+	});
 
   React.useEffect(() => {
     window && window.addEventListener('scroll', onScroll);
@@ -157,7 +166,7 @@ const Header = ({pathname}) => {
 
 	return (
 		<>
-			<NativeHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
+			<NativeHeader pageYOffset={pageYOffset} headerHeight={headerHeight} hasScrolled={hasScrolled}>
 
 				<LogoWrapper hasScrolled={hasScrolled}>
 					<FootPicture hasScrolled={hasScrolled} src={footOnlyLogo} alt="Foot logo" />

@@ -9,7 +9,7 @@ import socPandCLogo from '../../images/soc-chi-pod.png';
 
 const NativeFooter = styled.footer`
 	background-color: #EBF0EF;
-  position: absolute;
+  position: relative;
   left: 0;
   bottom: 0;
   height: 261px; /* matches global.css body margin-bottom */
