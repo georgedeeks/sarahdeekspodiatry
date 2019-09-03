@@ -141,16 +141,25 @@ const List = styled.ul`
 
 	`;
 
-const MobileHeading = styled.h2`
+const ServicesHeading = styled.h2`
 	color: #646464;
 	font-weight: bold;
 	font-size: 42px;
 	font-family: Arial;
 	margin: 0 0 50px 0;
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		color: #646464;
+		font-weight: bold;
+		font-size: 42px;
+		font-family: Arial;
+		margin: 0 0 50px 0;
+	}
 `;
 
 // TODO do i need ant-row installed?
-const MobileWrapper = styled.div`
+const ServicesWrapper = styled.div`
 	background: #EDEAF2;
 
 	height: 1470px;
@@ -158,6 +167,11 @@ const MobileWrapper = styled.div`
 	flex-direction: column;
 	
 	padding-top: 30px;
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		height: 900px;
+	}
 `;
 
 const MobileContainer = styled(Container)``;
@@ -212,89 +226,88 @@ const SquareFour = () => (
 	</React.Fragment>
 );
 
-const ServicesContent = ({isMobile}) => (
-	<React.Fragment>
-		<Wrapper>
-			{isMobile ? (
-				<MobileHeading>Services</MobileHeading>
-			) : (
-				<Heading>Services</Heading>
-			)}
+const FirstTwo = styled.div`
+	display: flex;
+	flex-direction: column;
 
-			{isMobile ? (
-				<MobileContainer>
-					<MobileSquare>
-						<SquareOne />
-					</MobileSquare>
+	/* desktop */
+	@media (min-width: 1050px)  {
+		flex-direction: row;
+	}
+`;
 
-					<MobileSquare>
-						<SquareTwo />
-					</MobileSquare>
+const LastTwo = styled.div`
+	display: flex;
+	flex-direction: column;
 
-					<MobileSquare>
-						<SquareThree />
-					</MobileSquare>
-
-					<MobileSquare>
-						<SquareFour />
-					</MobileSquare>
-				</MobileContainer>
-			) : (
-				<Container>
-					<FlexDirectionRow>
-						<TopServiceSquare>
-							<SquareOne />
-						</TopServiceSquare>
-
-						<TopServiceSquare>
-							<SquareTwo />
-						</TopServiceSquare>
-					</FlexDirectionRow>
-					
-					<FlexDirectionRow>
-						
-						<BottomServiceSquare>
-							<SquareThree />
-						</BottomServiceSquare>
-						
-						<BottomServiceSquare>
-							<SquareFour />
-						</BottomServiceSquare>
-
-					</FlexDirectionRow>
-				</Container>
-			)}
-				
-			<VerticalSpacing size={1} />
-		</Wrapper>
-	</React.Fragment>	
-);
+	/* desktop */
+	@media (min-width: 1050px)  {
+		flex-direction: row;
+	}
+`;
 
 const ServicesTile = () => {
-	var mq = {matches: false};
-	if (typeof window !== `undefined`) {
-		mq = window && window.matchMedia( "(max-width: 1050px)" );
-	}
-	
-	if (mq.matches) {
-		// window width is at less than 1050px
-		// mq.matches is mobile view
+	return (
+		<ServicesWrapper id="services">
+			<Wrapper>
+				<ServicesHeading>Services</ServicesHeading>
 
-		return (
-			<MobileWrapper id="services">
-				<ServicesContent isMobile={mq.matches} />
-			</MobileWrapper>
-		);
-	}
-	else {
-		// window width is greater than 1050px
+				<MobileContainer>
 
-		return (
-			<Tile height={900} background="#EDEAF2" id="services">
-				<ServicesContent isMobile={mq.matches} />
-			</Tile>
-		);
-	}
+					<FirstTwo>
+						<MobileSquare>
+							<SquareOne />
+						</MobileSquare>
+
+						<MobileSquare>
+							<SquareTwo />
+						</MobileSquare>
+					</FirstTwo>
+					
+					<LastTwo>
+						<MobileSquare>
+							<SquareThree />
+						</MobileSquare>
+
+						<MobileSquare>
+							<SquareFour />
+						</MobileSquare>
+					</LastTwo>
+				
+				</MobileContainer>
+{/* 
+				{isMobile ? (
+
+				) : (
+					<Container>
+						<FlexDirectionRow>
+							<TopServiceSquare>
+								<SquareOne />
+							</TopServiceSquare>
+
+							<TopServiceSquare>
+								<SquareTwo />
+							</TopServiceSquare>
+						</FlexDirectionRow>
+						
+						<FlexDirectionRow>
+							
+							<BottomServiceSquare>
+								<SquareThree />
+							</BottomServiceSquare>
+							
+							<BottomServiceSquare>
+								<SquareFour />
+							</BottomServiceSquare>
+
+						</FlexDirectionRow>
+					</Container>
+				)} */}
+					
+				<VerticalSpacing size={1} />
+			</Wrapper>
+		</ServicesWrapper>
+	);
 };
 
 export default ServicesTile;

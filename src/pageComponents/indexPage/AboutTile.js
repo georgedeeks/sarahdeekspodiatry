@@ -7,7 +7,6 @@ import hcpcLogo from '../../images/hcpc-logo-300x254.jpg';
 import socPandCLogo from '../../images/soc-chi-pod.png';
 import footprintTopLeftFoot from "../../images/footprint-top-left-foot.svg";
 
-
 import Tile from '../../components/Tile';
 import Heading from '../../components/Heading';
 import Paragraph from '../../components/Paragraph';
@@ -61,7 +60,6 @@ const LogosWrapper = styled.div`
 		align-items: center;
 		padding-top: 5px;
 	}
-
 `;
 
 const HCPCPicture = styled.img`
@@ -152,7 +150,6 @@ const MegaWrapper = styled.div`
 		flex-direction: row;
 		align-items: flex-start;
 		justify-content: center;
-
 	}
 `;
 
@@ -177,7 +174,6 @@ const AboutTile = () => {
 					<DesktopHeading>
 						About
 					</DesktopHeading>
-
 
 					<Paragraph>
 						<p>
