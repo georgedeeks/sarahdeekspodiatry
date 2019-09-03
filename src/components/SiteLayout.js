@@ -5,10 +5,6 @@ import styled from "styled-components";
 import Header from "./siteLayout/Header";
 import Footer from "./siteLayout/Footer";
 
-import Heading from "./Heading";
-
-import { transformPathnameToTitle } from '../utils';
-
 const Main = styled.main`
 `;
 
@@ -16,17 +12,6 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
-
-
-	const Fixy = styled.div`
-		position:fixed;
-		top:-1px; 
-		height:1px; 
-		width:100%; 
-		background:white;
-	`;
-
-
 
 // TODO pathname >> currentPathname all src refactor
 const SiteLayout = ({title, children, pathname}) => 
