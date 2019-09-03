@@ -23,31 +23,46 @@ const NativeHeader = styled.header`
 	align-items: flex-end;
 	height: ${props => props.headerHeight}px;
 
-	transition: height 0.2s ease-in-out;
+	transition: height 0.1s ease-in-out;
 
 	${props => props.hasScrolled && `
 		border-bottom: #7ECDC1 1px solid;
 	`}
-`;
 
-const MobileHeader = styled.header`
-	position: relative;
-	background: white;
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: flex-end;
-	height: ${HEADER_HEIGHT_SMALL}px;
-	border-bottom: #7ECDC1 2px solid;
-
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		position: relative;
+		background: white;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-end;
+		height: ${HEADER_HEIGHT_SMALL}px;
+		border-bottom: #7ECDC1 2px solid;
+	}
 `;
 
 const Nav = styled.nav`
-	height: 100%;
-	display: flex;
-	align-items: flex-end;
-	margin-right: 2%;
+	visibility: hidden;
+	
+	@media (min-width: 620px)  {
+		height: 100%;
+		display: flex;
+		align-items: flex-end;
+		margin-right: 2%;
+
+		/* just middle view */
+		font-size: 12px;
+		padding-bottom: 1rem;
+	}
+
+	@media (min-width: 1050px)  {
+		/* undo middle view */
+		font-size: 18px;
+		padding-bottom: 0;		
+	}
+
 `;
 
 const FootPicture = styled.img`
@@ -122,16 +137,11 @@ const LogoWrapper = styled.div`
 	`}
 `;
 
-const MobileNav = styled.nav`
-	font-size: 12px;
-	padding-bottom: 1rem;
-`;
-
 const Header = ({pathname}) => {
 	const [hasScrolled, setHasScrolled] = React.useState(false);
 
   const onScroll = throttle(() => {
-    setHasScrolled(window && window.pageYOffset > HEADER_HEIGHT_LARGE);
+    setHasScrolled(window.pageYOffset > 60);
   });
 
   React.useEffect(() => {
@@ -145,63 +155,37 @@ const Header = ({pathname}) => {
     ? HEADER_HEIGHT_SMALL
 		: HEADER_HEIGHT_LARGE;
 
-	var mq = {matches: false};
+	return (
+		<>
+			<NativeHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
 
-	if (typeof window !== `undefined`) {
-		mq = window && window.matchMedia( "(max-width: 1050px)" );
+				<LogoWrapper hasScrolled={hasScrolled}>
+					<FootPicture hasScrolled={hasScrolled} src={footOnlyLogo} alt="Foot logo" />
+					<TextPicture hasScrolled={hasScrolled} src={textOnlyLogo} alt="Logo text" />
+				</LogoWrapper>
 
-		if (mq.matches) {
-			headerHeight = HEADER_HEIGHT_SMALL;
-		}
-	}	
+				<Nav>
+					<ActiveLink 
+						displayHiddenOn619="true" services="false" 
+						title="Home" pathname={pathname} href="#top" 
+					/>
+					<ActiveLink 
+						displayHiddenOn619="false" services="false" 
+						title="About" pathname={pathname} href="#about" 
+					/>
+					<ActiveLink 
+						displayHiddenOn619="false" services="true" 
+						title="Services" pathname={pathname} href="#services" 
+					/>
+					<ActiveLink 
+						displayHiddenOn619="false" services="false" 
+						title="Location & Contact" pathname={pathname} href="#location-hours" 
+					/>
+				</Nav>
 
-	if (!mq.matches) {
-		return (
-			<>
-				<NativeHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
-	
-					<LogoWrapper hasScrolled={mq.matches || hasScrolled}>
-						<FootPicture hasScrolled={mq.matches || hasScrolled} src={footOnlyLogo} alt="Foot logo" />
-						<TextPicture hasScrolled={mq.matches || hasScrolled} src={textOnlyLogo} alt="Logo text" />
-					</LogoWrapper>
-	
-					<Nav>
-						<ActiveLink services="false" title="Home" pathname={pathname} href="#top" />
-						<ActiveLink services="false" title="About" pathname={pathname} href="#about" />
-						<ActiveLink services="true" title="Services" pathname={pathname} href="#services" />
-						<ActiveLink services="false" title="Location & Contact" pathname={pathname} href="#location-hours" />
-					</Nav>
-	
-				</NativeHeader>
-			</>
-		);
-	} else {
-		var mq2 = {matches: false};
-		if (typeof window !== `undefined`) {
-			mq2 = window && window.matchMedia( "(min-width: 620px)" );
-		}
-
-		return (
-			<>
-				<MobileHeader headerHeight={headerHeight} hasScrolled={hasScrolled}>
-	
-					<LogoWrapper hasScrolled={mq.matches || hasScrolled}>
-						<FootPicture hasScrolled={mq.matches || hasScrolled} src={footOnlyLogo} alt="Foot logo" />
-						<TextPicture hasScrolled={mq.matches || hasScrolled} src={textOnlyLogo} alt="Logo text" />
-					</LogoWrapper>
-
-					{mq2.matches && (
-						<MobileNav>
-							<ActiveLink services="false" title="About" pathname={pathname} href="#about" />
-							<ActiveLink services="false" title="Services" pathname={pathname} href="#services" />
-							<ActiveLink services="false" title="Location & Contact" pathname={pathname} href="#location-hours" />
-						</MobileNav>
-					)}					
-		
-				</MobileHeader>
-			</>
-		);
-	}
+			</NativeHeader>
+		</>
+	);
 };
 
 Header.propTypes = {

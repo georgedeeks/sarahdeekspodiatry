@@ -51,14 +51,22 @@ const StyledLink = styled.a`
 		line-height: 12px;
 		text-align: center;
 	}
+
+	${props => props.displayHiddenOn619 && props.displayHiddenOn619 === 'true' && `
+		/* MOBILE */
+		@media (max-width: 620px)  {
+			display: hidden;
+		}
+	`}
 `;
 
-const ActiveLink = ({pathname, href, title, services}) => {	
+const ActiveLink = ({pathname, href, title, services, displayHiddenOn619}) => {	
 	return (
 		<StyledLink 
 			href={href}
 			active={(pathname === href).toString()}
 			services={services}
+			displayHiddenOn619={displayHiddenOn619}
 		>
 			{title}
 		</StyledLink>	
@@ -70,7 +78,8 @@ ActiveLink.propTypes = {
 	href: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	services: PropTypes.string.isRequired,
-	
+	displayHiddenOn619: PropTypes.string.isRequired,
+
 };
 
 export default ActiveLink;
