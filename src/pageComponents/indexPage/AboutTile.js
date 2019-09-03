@@ -19,8 +19,10 @@ const Writing = styled.div`
 	/* MOBILE */
 	@media (max-width:1050px)  {
 		padding-top: 20px;
+		display: flex;
+		flex-direction: row;
+		width: 100%;
 	}
-
 `;
 
 const SarahPic = styled.img`
@@ -81,102 +83,144 @@ const BackgroundFootPicture = styled.img`
 	top: 30px;
 `;
 
-const MobileWrapper = styled.div`
+const MobileHeading = styled.h2`
+	color: #646464;
+	font-weight: bold;
+	font-size: 42px;
+	font-family: Arial;
+	margin: 0 0 1em 1em;
+	display: flex;
+	justify-content: center;
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		visibility: hidden;	
+		padding: 0;
+		margin: 0;
+		height: 0px;
+	}
+`;
+
+const DesktopHeading = styled.h2`
+	/*mobile */
+	visibility: hidden;	
+	margin: 0;
+	padding: 0;
+	width: 0;
+	height: 0;
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		visibility: visible;
+		color: #646464;
+		font-weight: bold;
+		font-size: 42px;
+		font-family: Arial;	
+		margin: 0 0 50px 0;
+		padding-bottom: 50px;
+	}
+`;
+
+const Wrapper = styled.div`
 	background: white;
-	height: 1200px;
+	height: 1175px;
 	width: 100%;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding-top: 30px;
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		flex-direction: column;
+		height: 800px;	
+	}
 `;
 
+const MegaWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
+	justify-content: flex-start;
+	height: calc(100% - 90px);
 
-const AboutContent = ({isMobile}) => (
-	<React.Fragment>
+	justify-content: space-evenly;
 
-		{isMobile && (
-			<Heading>
-				About
-			</Heading>
-		)}
+	/* desktop */
+	@media (min-width: 1050px)  {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: center;
 
-		<PicsWrapper>
-			<SarahPic src={blueSarah} alt="Picture of Sarah" />
-			<LogosWrapper>
-				<SPACPicture src={socPandCLogo} alt="SPAC logo" />
-				<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
-			</LogosWrapper>
-		</PicsWrapper>
-
-		<Writing>
-			{!isMobile && (
-				<Heading>
-					About
-				</Heading>
-			)}			
-
-			<Paragraph>
-				<p>
-					I graduated from the 
-					<b> University of East London </b> 
-					in 
-					2013 
-					with a 
-					<b> BSc(Hons) in Podiatric Medicine</b>. 
-				</p>
-
-				<p>
-					I am registered with the 
-					<b> Healthcare Professions Council </b> 
-					and am also a member of the 
-					<b> Society of Chiropodists and Podiatrists</b>.
-					To keep up to date, I regularly attend professional development courses and keep current with the latest research.
-				</p>
-
-				<p>
-					As well as a keen interest in the 
-					<b> diabetic foot</b>
-					, my particular specialism is in 
-					<b> musculoskeletal care</b>. 
-					I am particularly experienced in 
-					<b> orthotics </b> 
-					and have a detailed understanding of the diagnosis, treatment and prevention measures of issues related to an individual’s gait.
-				</p>
-
-				<p>
-					My friendly approach to treating my patients helps me discover their needs, so they can
-					maintain good foot health in everyday life. 
-				</p> 
-			</Paragraph>
-
-			<BackgroundFootPicture src={footprintTopLeftFoot} alt="Background image of foot" />
-
-		</Writing>
-	</React.Fragment>
-)
+	}
+`;
 
 const AboutTile = () => {
-	var mq = {matches: false};
-	if (typeof window !== `undefined`) {
-		mq = window && window.matchMedia( "(max-width: 1050px)" );
-	}
+	return (
+		<Wrapper id="about">
+			<MobileHeading>
+				About
+			</MobileHeading>
 
-	if (mq.matches) {
-		return (
-			<MobileWrapper id="about">
-				<AboutContent isMobile={mq.matches} />
-			</MobileWrapper>
-		);
-	}
-	else {
-		return (
-			<Tile height={675} id="about">
-				<AboutContent isMobile={mq.matches} />
-			</Tile>
-		);
-	}
+			<MegaWrapper>
+
+				<PicsWrapper>
+					<SarahPic src={blueSarah} alt="Picture of Sarah" />
+					<LogosWrapper>
+						<SPACPicture src={socPandCLogo} alt="SPAC logo" />
+						<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
+					</LogosWrapper>
+				</PicsWrapper>
+
+				<Writing>
+					<DesktopHeading>
+						About
+					</DesktopHeading>
+
+
+					<Paragraph>
+						<p>
+							I graduated from the 
+							<b> University of East London </b> 
+							in 
+							2013 
+							with a 
+							<b> BSc(Hons) in Podiatric Medicine</b>. 
+						</p>
+
+						<p>
+							I am registered with the 
+							<b> Healthcare Professions Council </b> 
+							and am also a member of the 
+							<b> Society of Chiropodists and Podiatrists</b>.
+							To keep up to date, I regularly attend professional development courses and keep current with the latest research.
+						</p>
+
+						<p>
+							As well as a keen interest in the 
+							<b> diabetic foot</b>
+							, my particular specialism is in 
+							<b> musculoskeletal care</b>. 
+							I am particularly experienced in 
+							<b> orthotics </b> 
+							and have a detailed understanding of the diagnosis, treatment and prevention measures of issues related to an individual’s gait.
+						</p>
+
+						<p>
+							My friendly approach to treating my patients helps me discover their needs, so they can
+							maintain good foot health in everyday life. 
+						</p> 
+					</Paragraph>
+
+					<BackgroundFootPicture src={footprintTopLeftFoot} alt="Background image of foot" />
+
+				</Writing>
+
+			</MegaWrapper>
+
+		</Wrapper>
+	);
 };
 
 export default AboutTile;

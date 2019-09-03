@@ -1,15 +1,11 @@
 html {
   position: relative;
   min-height: 100%;
-  /* change at end before publishing? */
-  width: 120vw;
-
+  /* change at end before publishing? width: 120vw; */
+  
 	@media (min-width:1050px)  {
 		width: 100vw;
 	}
-
-
-  
 }
 
 body {
