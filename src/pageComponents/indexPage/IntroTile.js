@@ -12,7 +12,7 @@ import VerticalSpacing from '../../components/VerticalSpacing';
 
 const FootPicture = styled.img`
 	/* mobile first */
-	visibility: hidden;
+	display: none;
 	
 	@media (min-width: 1050px)  {
 		display: block;
@@ -22,7 +22,6 @@ const FootPicture = styled.img`
 		height: auto;
 		margin-left: 5%;
 		margin-top: 30px;
-		visibility: visible;
 	}		
 `;
 

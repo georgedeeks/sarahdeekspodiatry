@@ -42,9 +42,14 @@ const FootPicture = styled.img`
 `;
 
 const BackgroundContainer = styled.div`
-	height: 48px;
+	height: 121px;
 	justify-content: center;
 	display: flex;
+
+	/* desktop */
+	@media (min-width:1050px)  {
+		height: 48px;
+	}
 `;
 
 const ContentContainer = styled.div`
@@ -61,10 +66,16 @@ const ContentContainer = styled.div`
 `;
 
 const LogoContainer = styled.div`
-	display: flex;
-	justify-content: space-between;
+	height: 100%;
 	width: 100%;
 
+	/* desktop */
+	@media (min-width:1050px)  {
+		display: flex;
+		justify-content: space-between;
+		height: 100%;
+		width: 100%;
+	}
 `;
 
 const InfoContainer = styled.div`
@@ -75,12 +86,26 @@ const InfoContainer = styled.div`
 `;
 
 const HCPCPicture = styled.img`
-	zoom: 24%;
-	padding: 10px;
+	display: none;
+	zoom: 0%;
+
+	/* desktop */
+	@media (min-width:1050px)  {
+		zoom: 24%;
+		padding: 10px;
+		display: initial;
+	}
 `;
 
 const SPACPicture = styled.img`
-	zoom: 24%;
+	display: none;
+	zoom: 0%;
+	
+	/* desktop */
+	@media (min-width:1050px)  {
+		zoom: 24%;
+		display: initial;
+	}
 
 `;
 
@@ -91,24 +116,29 @@ const TextBlock = styled.div`
 	align-items: center;
 	flex: 1;
 
-	/* MOBILE */
-	@media (max-width:1050px)  {
-		padding-top: 3.5rem;
-	}
+
 `;
 
 const PictureFrameLeft = styled.div`
-	display: flex;
-	justify-content: flex-start;
-	flex: 1;
+	display: none;
 
+	/* desktop */
+	@media (min-width:1050px)  {
+		display: flex;
+		justify-content: flex-start;
+		flex: 1;
+	}
 `;
 
 const PictureFrameRight = styled.div`
-	display: flex;
-	justify-content: flex-end;
-	flex: 1;
+	display: none;
 
+	/* desktop */
+	@media (min-width:1050px)  {
+		display: flex;
+		justify-content: flex-end;
+		flex: 1;
+	}
 `;
 
 const Title = styled.div`
@@ -126,7 +156,7 @@ const ContactType = styled.span`
 	opacity: 0.75;
 `;
 
-const DesktopFooter = () => {
+const Footer = () => {
 	return (
 		<NativeFooter>
 		
@@ -175,61 +205,6 @@ const DesktopFooter = () => {
 
 		</NativeFooter>
 	);
-};
-
-const MobileFooter = () => {
-	return (
-		<NativeFooter>
-		
-			<BackgroundContainer>
-				<FootPicture src={footOnlyLogo} alt="Foot logo" />
-			</BackgroundContainer>
-			
-			<ContentContainer>
-				
-				<TextBlock>
-					<Title>Sarah Deeks Podiatry</Title>
-					<div>
-						<ContactType>Tel: </ContactType>
-						<ContactPlainLink href="tel:+447824159320"> 
-							+44(0)7824159320
-						</ContactPlainLink>
-					</div>						
-					<div>
-						<ContactType>Email: </ContactType> 							
-						<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
-							sarahjdeeks@gmail.com
-						</ContactPlainLink>
-					</div>
-				</TextBlock>
-
-				<Copyright>
-					Copyright © George Deeks 2019
-					{new Date().getFullYear() > 2019 && (
-						' ‒ ' + new Date().getFullYear()
-					)}
-				</Copyright>
-
-			</ContentContainer>
-
-		</NativeFooter>
-	);
-};
-
-const Footer = () => {
-	if (typeof window !== `undefined`) {
-		var mq = window && window.matchMedia( "(max-width: 1050px)" );
-		if (mq.matches) {
-			return (
-				<MobileFooter />
-			);
-		}
-	}
-
-	return (
-		<DesktopFooter />
-	);
-	
 };
 
 export default Footer;

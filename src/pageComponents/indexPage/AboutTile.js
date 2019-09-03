@@ -78,7 +78,14 @@ const SPACPicture = styled.img`
 `;
 
 const BackgroundFootPicture = styled.img`
-	top: 30px;
+
+	display: none;
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		display: relative;	
+		top: 30px;
+	}
 `;
 
 const MobileHeading = styled.h2`

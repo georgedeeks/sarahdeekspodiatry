@@ -71,16 +71,19 @@ const Purple = styled.div`
 `;
 
 const FootPicture = styled.img`
-	width: 99px;
-	height: 96px;
-	top: 157px;
-	position: relative;
+	display: none;
+	width: 0;
+	height: 0;
+	top: 0;
 
-	/* MOBILE */
-	@media (max-width:1050px)  {
-		visibility: hidden;
+	/* desktop */
+	@media (min-width:1050px)  {
+		display: initial;
+		width: 99px;
+		height: 96px;
+		top: 246px;
+		position: relative;
 	}
-
 `;
 
 const SmallText = styled.div`
@@ -167,16 +170,18 @@ const LocationAndHoursTile = () => {
 				<iframe 
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.302179388684!2d-0.1985182842266448!3d51.599351579650374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487617521178e1cb%3A0x691313c53747e04d!2sFinchley+Osteopathy+Clinic!5e0!3m2!1sen!2suk!4v1565564708951!5m2!1sen!2suk" 
 					width="95%" 
-					height="550px" 
+					height="350px" 
 					frameBorder="0" 
 					style={{"border" : "0"}}
 					allowFullScreen
 					title="google-maps"
 				/>
 				
-				<FootPicture src={footOnlyLogo} alt="Foot logo" />
 
 			</ContentWrapper>
+
+			<FootPicture src={footOnlyLogo} alt="Foot logo" />
+
 		</LocationWrapper>
 	);
 };

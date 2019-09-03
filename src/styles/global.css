@@ -5,7 +5,9 @@ html {
   
 	@media (min-width:1050px)  {
 		width: 100vw;
-	}
+  }
+  
+  overflow: hidden;
 }
 
 body {

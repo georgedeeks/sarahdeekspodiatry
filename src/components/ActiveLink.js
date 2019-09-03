@@ -50,12 +50,13 @@ const StyledLink = styled.a`
 		font-weight: bold;
 		line-height: 12px;
 		text-align: center;
+		display: initial;
 	}
 
 	${props => props.displayHiddenOn619 && props.displayHiddenOn619 === 'true' && `
 		/* MOBILE */
 		@media (max-width: 620px)  {
-			display: hidden;
+			display: none;
 		}
 	`}
 `;
