@@ -59,6 +59,7 @@ const StyledLink = styled.a`
 			display: none;
 		}
 	`}
+
 `;
 
 const ActiveLink = ({pathname, href, title, services, displayHiddenOn619}) => {	

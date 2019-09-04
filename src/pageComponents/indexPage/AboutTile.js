@@ -138,7 +138,7 @@ const Wrapper = styled.div`
 	/* desktop */
 	@media (min-width: 1050px)  {
 		flex-direction: column;
-		height: 800px;	
+		height: 900px;	
 	}
 `;
 

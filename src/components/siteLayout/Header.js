@@ -21,9 +21,8 @@ const NativeHeader = styled.header`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: flex-end;
-
-
-
+	display: flex;
+	align-items: flex-end;
 	height: ${props => props.hasScrolled ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE}px;
 
 	transition: height 0.1s ease-in-out;
@@ -49,26 +48,14 @@ const NativeHeader = styled.header`
 const Nav = styled.nav`
 	display: none;
 	
-	@media (min-width: 620px)  {
+	@media (min-width: 1050px)  {
+		font-size: 18px;
 		height: 100%;
 		display: flex;
 		align-items: flex-end;
-		margin-right: 2%;
-		display: none; /* TODO change back */
-
-		/* just middle view */
-		font-size: 12px;
-		padding-bottom: 1rem;
+		
+		display: flex;
 	}
-
-	@media (min-width: 1050px)  {
-		/* undo middle view */
-		font-size: 18px;
-		padding-bottom: 0;		
-
-		display: initial;
-	}
-
 `;
 
 const FootPicture = styled.img`
@@ -187,7 +174,7 @@ const Header = ({pathname}) => {
 						title="Services" pathname={pathname} href="#services" 
 					/>
 					<ActiveLink 
-						displayHiddenOn619="false" services="false" 
+						displayHiddenOn619="false" services="true" 
 						title="Location & Contact" pathname={pathname} href="#location-hours" 
 					/>
 				</Nav>
