@@ -89,7 +89,7 @@ const IntroWrapper = styled.div`
 
 	/* mobile first */
 	background: #EBF0EF;
-	height: 800px;
+	height: 400px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -99,7 +99,7 @@ const IntroWrapper = styled.div`
 
 	/* iphone 6 and above */
 	@media (min-width: 375px)  {
-		height: 600px;
+		height: 400px;
 	}
 
 	
