@@ -1,13 +1,8 @@
 html {
   position: relative;
-  min-height: 100%;
-  /* change at end before publishing? width: 120vw; */
   
-	@media (min-width:1050px)  {
-		width: 120vw;
-  }
-  
-  overflow: hidden;
+  min-width: 100vw;
+  max-width: 100vw;
 }
 
 body {
