@@ -131,18 +131,55 @@ const LogoWrapper = styled.div`
 `;
 
 const Header = ({pathname}) => {
+	// const [hasScrolled, sethasScrolled] = React.useState(false);
+	// const [pageYOffset, setpageYOffset] = React.useState(0);
+	// const [lastCheck, setLastCheck] = React.useState(0);
+
 	const [hasScrolled, setHasScrolled] = React.useState(false);
 	const [pageYOffset, setPageYOffset] = React.useState(0);
 
+  const onScroll = throttle((hasScrolled) => {
 
-  const onScroll = throttle(() => {
-    setHasScrolled(window.pageYOffset > 60);
+		setHasScrolled(window.pageYOffset > 60);
     setPageYOffset(window.pageYOffset);
+
+		// var now = Date.now();
+		// var nextCheck = lastCheck + 1100;
+		// //console.log('checking if enough time between scroll checks')
+		// if ((now > nextCheck)) {
+		// 	setLastCheck(now);
+		// 	//console.log('now', now, 'nextCheck', nextCheck, 'lastCheck', lastCheck)
+		// 	console.log('yes, enough time by', now - nextCheck, 'milliseconds; setting new lastCheck');
+		// 	var latestScrollDirection = (window.pageYOffset > pageYOffset) ? 'down' : 'up';
+		// 	console.log('we have just scrolled', latestScrollDirection);
+		// 	var sizeOfHeader = hasScrolled ? 'small' : 'large';
+		// 	console.log('header size is', sizeOfHeader);
+		// 	if (sizeOfHeader === 'large' && latestScrollDirection === 'down') {
+		// 		console.log('large header + down scroll means check we have scrolled past 60px');
+		// 		if (window.pageYOffset > 60) {
+		// 			console.log('we scrolled past 60 - so set stuff')
+		// 			sethasScrolled(true);
+		// 		} else {
+		// 			console.log('we didnt scroll past 60 - so dont worry')
+		// 		}
+		// 	}		
+		// 	if (sizeOfHeader === 'small' && latestScrollDirection === 'up') {
+		// 		console.log('large header + down scroll means check we have scrolled past 60px');
+		// 		if (window.pageYOffset < 60) {
+		// 			console.log('we scrolled above 60 - so set stuff')
+		// 			sethasScrolled(false);
+		// 		} else {
+		// 			console.log('we didnt scroll above 60 - so dont worry')
+		// 		}
+		// 	}	
+		// } else {
+		// 	//console.log('not enough time. exiting.');
+		// }    
 	});
 
   React.useEffect(() => {
     window && window.addEventListener('scroll', onScroll);
-    onScroll();
+    onScroll(hasScrolled);
 
     return () => window && window.removeEventListener('scroll', onScroll);
 	});
@@ -153,7 +190,11 @@ const Header = ({pathname}) => {
 
 	return (
 		<>
-			<NativeHeader pageYOffset={pageYOffset} headerHeight={headerHeight} hasScrolled={hasScrolled}>
+			<NativeHeader 
+				pageYOffset={pageYOffset} 
+				headerHeight={headerHeight} 
+				hasScrolled={hasScrolled}
+			>
 
 				<LogoWrapper hasScrolled={hasScrolled}>
 					<FootPicture hasScrolled={hasScrolled} src={footOnlyLogo} alt="Foot logo" />

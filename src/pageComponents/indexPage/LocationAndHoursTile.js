@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import PlainLink from '../../components/PlainLink';
-import Tile from '../../components/Tile';
-import Heading from '../../components/Heading';
 
 import footOnlyLogo from "../../images/logo_symbol.png";
 
@@ -41,7 +39,7 @@ const InfoWrapper = styled.div`
 		margin: 0;
 		padding: 0 1rem 3rem 1rem;
 		width: 90%;
-		height: 12rem;
+		height: 9rem;
 	}
 `;
 
@@ -81,9 +79,9 @@ const FootPicture = styled.img`
 		display: initial;
 		width: 99px;
 		height: 96px;
-		top: 246px;
+		top: calc(200px + -82px + 64px);
 		position: relative;
-	}
+	} 
 `;
 
 const SmallText = styled.div`
@@ -135,13 +133,36 @@ const Address = styled.div`
 	}	
 `;
 
+const StyledHeading = styled.h2`
+	color: #646464;
+	font-weight: bold;
+	font-size: 42px;
+	font-family: Arial;
+	margin: 0 0 1em 1em;
+
+
+	/* desktop */
+	@media (min-width:1050px)  {
+		margin: 64px 0 50px 0;
+	}
+`;
+
+const OnlyDesktop = styled.div`
+	display: none;
+
+	/* desktop */
+	@media (min-width:1050px)  {
+		display: initial;
+	}
+`;
+
 const LocationAndHoursTile = () => {
 	return (
 		<LocationWrapper id="location-hours">
 			<ContentWrapper>
-				<Heading>
+				<StyledHeading>
 					Location & Hours
-				</Heading>
+				</StyledHeading>
 
 				<InfoWrapper>
 					<Location>
@@ -152,7 +173,8 @@ const LocationAndHoursTile = () => {
 							<SmallText>(link opens in a new window)</SmallText>
 						</Building>
 						<Address>
-							<div>307 Regents Park Rd{' '}</div>
+							<div>307 Regents Park Rd</div>
+							<OnlyDesktop>,&nbsp;</OnlyDesktop>
 							<SpecialDiv>Finchley, London N3 1DP</SpecialDiv>
 							</Address>
 					</Location>
