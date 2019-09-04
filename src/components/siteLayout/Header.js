@@ -47,14 +47,14 @@ const NativeHeader = styled.header`
 `;
 
 const Nav = styled.nav`
-	visibility: hidden;
+	display: none;
 	
 	@media (min-width: 620px)  {
 		height: 100%;
 		display: flex;
 		align-items: flex-end;
 		margin-right: 2%;
-		visibility: hidden; /* TODO change back */
+		display: none; /* TODO change back */
 
 		/* just middle view */
 		font-size: 12px;
@@ -66,7 +66,7 @@ const Nav = styled.nav`
 		font-size: 18px;
 		padding-bottom: 0;		
 
-		visibility: visible;
+		display: initial;
 	}
 
 `;

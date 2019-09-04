@@ -99,7 +99,7 @@ const MobileHeading = styled.h2`
 
 	/* desktop */
 	@media (min-width: 1050px)  {
-		visibility: hidden;	
+		display: none;
 		padding: 0;
 		margin: 0;
 		height: 0px;
@@ -108,7 +108,7 @@ const MobileHeading = styled.h2`
 
 const DesktopHeading = styled.h2`
 	/*mobile */
-	visibility: hidden;	
+	display: none;
 	margin: 0;
 	padding: 0;
 	width: 0;
@@ -116,7 +116,7 @@ const DesktopHeading = styled.h2`
 
 	/* desktop */
 	@media (min-width: 1050px)  {
-		visibility: visible;
+		display: initial;
 		color: #646464;
 		font-weight: bold;
 		font-size: 42px;

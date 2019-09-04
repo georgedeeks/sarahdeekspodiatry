@@ -76,11 +76,11 @@ const ContactPlainLink = styled(PlainLink)`
 
 const BackgroundFootPicture = styled.img`
 /* mobile first */
-	visibility: hidden;
+	display: none;
 	
 	@media (min-width: 1050px)  {
 		top: 30px;
-		visibility: visible;
+		display: initial;
 	}	
 `;
 
