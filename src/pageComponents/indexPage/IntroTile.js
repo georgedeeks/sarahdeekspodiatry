@@ -89,7 +89,7 @@ const IntroWrapper = styled.div`
 
 	/* mobile first */
 	background: #EBF0EF;
-	height: 400px;
+	height: 440px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
