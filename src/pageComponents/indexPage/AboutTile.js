@@ -128,12 +128,17 @@ const DesktopHeading = styled.h2`
 
 const Wrapper = styled.div`
 	background: white;
-	height: 1175px;
 	width: 100%;
+	height: 1675px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding-top: 30px;
+
+	/* iphone 6 and above */
+	@media (min-width: 375px)  {
+		height: 1375px;
+	}
 
 	/* desktop */
 	@media (min-width: 1050px)  {

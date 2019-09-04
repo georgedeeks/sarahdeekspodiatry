@@ -86,15 +86,21 @@ const BackgroundFootPicture = styled.img`
 
 const IntroWrapper = styled.div`
 
+
 	/* mobile first */
 	background: #EBF0EF;
-	height: 400px;
+	height: 800px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding-bottom: 50px;
 	display: relative;
 	width: 100%;
+
+	/* iphone 6 and above */
+	@media (min-width: 375px)  {
+		height: 600px;
+	}
 
 	
 	@media (min-width: 1050px)  {
