@@ -8,6 +8,7 @@ import VerticalSpacing from '../../components/VerticalSpacing';
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 `;
 
 const ServiceSquare = styled.div`
@@ -16,38 +17,38 @@ const ServiceSquare = styled.div`
 	align-items: center;
 	justify-content: space-between;
 
-
+	width: 280px;
+	height: 300px;
 
 	border: 1px solid white;
 	margin: 45px 45px;
 
-	height: 300px;
-	width: 340px;
 	background-color: #FFFFFF;
 	box-shadow: 0 2px 4px 0 rgba(200,200,200,0.5);
 	
 	> * {
-		width: 260px;
+		width: 220px;
+	}
+
+	/* iphone 6 and above */
+	@media (min-width: 375px)  {
+		width: 340px;
+
+		> * {
+			width: 260px;
+		}
+	}
+
+	/* desktop */
+	@media (min-width: 1050px)  {
+		${props => props.desktopMr && props.desktopMr === '80' && `
+			margin-right: 80px;
+		`}
 	}
 `;
 
-const TopServiceSquare = styled(ServiceSquare)`
-	margin-top: 0;
-`;
-
-const BottomServiceSquare = styled(ServiceSquare)`
-	margin-bottom: 60px;
-	justify-content: flex-start;
-`;
-
-const Service = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-`;
-
 const ExplanationPoint = styled.li`
-	width: 260px;
+	width: 220px;
 	color: #646464;
 	font-family: Arial;
 	font-size: 18px;
@@ -57,11 +58,24 @@ const ExplanationPoint = styled.li`
 	text-indent: -.7em;
 	
 	::before {
+		font-size: 14px;
 		content: "•";
-		font-size: 20px;
-		margin-right: 0.5em;
 		color: #ACD4CE; 
+		margin-right: 0.25em;
 	}
+
+	/* iphone 6 and above */
+	@media (min-width: 375px)  {
+		padding-left: 0.5em; 
+		font-size: 18px;
+		width: 260px;
+		line-height: 21px;
+
+		::before {
+			margin-right: 0.5em;
+			font-size: 20px;
+		}
+	}	
 `;
 
 const ExplanationText = styled.div`
@@ -106,11 +120,6 @@ const Divider = styled.div`
 `;
 
 const SpecialDivider = styled(Divider)`
-`;
-
-const FlexDirectionRow = styled.div`
-	display: flex;
-	flex-direction: row;
 `;
 
 const Wrapper = styled.div`
@@ -170,11 +179,10 @@ const ServicesWrapper = styled.div`
 
 	/* desktop */
 	@media (min-width: 1050px)  {
-		height: 900px;
+		height: 1000px;
 	}
 `;
 
-const MobileContainer = styled(Container)``;
 const MobileSquare = styled(ServiceSquare)`
 	margin: 10px;
 `;
@@ -226,23 +234,30 @@ const SquareFour = () => (
 	</React.Fragment>
 );
 
-const FirstTwo = styled.div`
+const TwoSquares = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 
 	/* desktop */
 	@media (min-width: 1050px)  {
 		flex-direction: row;
+		justify-content: center;
+		width: 100%;
 	}
 `;
 
-const LastTwo = styled.div`
+const TwoSquaresBottom = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 
 	/* desktop */
 	@media (min-width: 1050px)  {
 		flex-direction: row;
+		justify-content: center;
+		width: 100%;
+		margin-top: 50px;
 	}
 `;
 
@@ -252,58 +267,30 @@ const ServicesTile = () => {
 			<Wrapper>
 				<ServicesHeading>Services</ServicesHeading>
 
-				<MobileContainer>
+				<Container>
 
-					<FirstTwo>
-						<MobileSquare>
+					<TwoSquares>
+						<MobileSquare desktopMr="80">
 							<SquareOne />
 						</MobileSquare>
 
 						<MobileSquare>
 							<SquareTwo />
 						</MobileSquare>
-					</FirstTwo>
+					</TwoSquares>
 					
-					<LastTwo>
-						<MobileSquare>
+					<TwoSquaresBottom>
+						<MobileSquare desktopMr="80">
 							<SquareThree />
 						</MobileSquare>
 
 						<MobileSquare>
 							<SquareFour />
 						</MobileSquare>
-					</LastTwo>
+					</TwoSquaresBottom>
 				
-				</MobileContainer>
-{/* 
-				{isMobile ? (
+				</Container>
 
-				) : (
-					<Container>
-						<FlexDirectionRow>
-							<TopServiceSquare>
-								<SquareOne />
-							</TopServiceSquare>
-
-							<TopServiceSquare>
-								<SquareTwo />
-							</TopServiceSquare>
-						</FlexDirectionRow>
-						
-						<FlexDirectionRow>
-							
-							<BottomServiceSquare>
-								<SquareThree />
-							</BottomServiceSquare>
-							
-							<BottomServiceSquare>
-								<SquareFour />
-							</BottomServiceSquare>
-
-						</FlexDirectionRow>
-					</Container>
-				)} */}
-					
 				<VerticalSpacing size={1} />
 			</Wrapper>
 		</ServicesWrapper>

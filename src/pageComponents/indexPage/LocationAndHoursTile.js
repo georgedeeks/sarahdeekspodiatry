@@ -45,7 +45,20 @@ const InfoWrapper = styled.div`
 
 const Location = styled.div`
 	height: 50px;	
-	width: 400px;	
+
+	width: 300px;
+
+	/* iphone 6 and above */
+	@media (min-width: 375px)  {
+		width: 350px;	
+	}	
+
+	/* iphone 6 and above */
+	@media (min-width: 500px)  {
+		width: 400px;	
+	}	
+
+
 
 `;
 
@@ -85,15 +98,20 @@ const FootPicture = styled.img`
 `;
 
 const SmallText = styled.div`
-	font-style: italic;
-	margin-left: 0.5rem;
-	font-size: 12px;
+	display: none;
+
+	/* iphone 6 and above */
+	@media (min-width: 375px)  {
+		font-style: italic;
+		margin-left: 0.5rem;
+		font-size: 12px;
+		display: initial;
+	}
 
 	/* desktop */
 	@media (min-width: 1050px)  {
 		font-size: 14px;
 		margin-left: 0.5rem;
-
 	}	
 `;
 
