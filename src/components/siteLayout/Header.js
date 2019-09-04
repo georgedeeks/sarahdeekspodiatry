@@ -135,7 +135,7 @@ const Header = ({pathname}) => {
 
   const onScroll = throttle((hasScrolled) => {
 		setHasScrolled(window.pageYOffset > 60);
-	});
+	}, 800);
 
   React.useEffect(() => {
     window && window.addEventListener('scroll', onScroll);
