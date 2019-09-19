@@ -187,6 +187,31 @@ const MobileSquare = styled(ServiceSquare)`
 	margin: 10px;
 `;
 
+const RoutinePrice = styled.div`
+	color: #7ECDC1;
+	font-family: Arial;
+	font-size: 24px;
+	line-height: 28px;
+	padding-bottom: 12px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+`;
+
+const RoutineHome = styled.div`
+	color: purple;
+	font-style: italic;
+	font-family: Arial;
+	font-size: 18px;
+	line-height: 20px;
+	padding-bottom: 25px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+`;
+
 const SquareOne = () => (
 	<React.Fragment>
 		<Title>Routine assessment and treatment</Title>
@@ -196,7 +221,8 @@ const SquareOne = () => (
 			<ExplanationPoint>Callous removal</ExplanationPoint>			
 			<ExplanationPoint>General advice, including for fungal nails</ExplanationPoint>	
 		</List>							
-		<Price>£45.00</Price>
+		<RoutinePrice>£35.00</RoutinePrice>
+		<RoutineHome>Home visit - £45.00</RoutineHome>
 	</React.Fragment>
 );
 
@@ -219,7 +245,7 @@ const SquareThree = () => (
 		<SpecialBottomExplanationText>
 			A short meeting, 15 minutes if required, to assess foot health and treatment plan.
 		</SpecialBottomExplanationText>
-		<Price>£20</Price>
+		<Price>£20.00</Price>
 	</React.Fragment>
 );
 
