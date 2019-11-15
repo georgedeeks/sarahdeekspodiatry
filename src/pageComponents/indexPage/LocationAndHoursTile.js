@@ -32,7 +32,7 @@ const InfoWrapper = styled.div`
 	font-size: 18px;	
 	line-height: 24px;
 
-	/* MOBILE */
+	/* MOBILE VIEW */
 	@media (max-width:1050px)  {
 		flex-direction: column;
 		width: 100%;
