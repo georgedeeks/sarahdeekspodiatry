@@ -7,8 +7,8 @@ Supports 320px screen width & above.
 # Setup 
 
 ## Prerequisites
-git
-nvm
+- git
+- nvm
 
 ## Quickstart
 In project root:
