@@ -11,10 +11,16 @@ git
 nvm
 
 ## Quickstart
+In project root:
+```
 nvm install
 nvm use
 npm install -g yarn
 yarn
+```
 
 ## Run site locally
+In project root:
+```
 yarn dev
+```
