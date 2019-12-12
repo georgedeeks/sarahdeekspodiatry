@@ -18,7 +18,7 @@ const Index = ({location}) => {
 				<IndexPage />
 			</SiteLayout>
 		</>
-	
+
 	);
 };
 
