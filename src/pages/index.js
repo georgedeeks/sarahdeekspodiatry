@@ -11,6 +11,7 @@ const Index = ({location}) => {
 			<Helmet>
 				<meta charSet="utf-8" />
 				<title>Sarah Deeks Podiatry</title>
+				<meta name="google-site-verification" content="1UCUNug1lgxZygvTYTzdz1szPQE7Z4lNi_hGSTnqiuk" />
 			</Helmet>
 
 			<SiteLayout title="Sarah Deeks Podiatry" pathname={location.pathname}>
