@@ -17,7 +17,7 @@ module.exports = {
         name: `Sarah Deeks Podiatry`,
         short_name: `SD Podiatry`,
         start_url: `/`,
-        icon: `src/images/logo_symbol.png`,
+        icon: `src/images/logo_symbol_square.png`,
       },
     },
     `gatsby-plugin-sharp`,

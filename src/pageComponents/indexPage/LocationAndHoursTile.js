@@ -153,6 +153,11 @@ const StyledHeading = styled.h2`
 	font-family: Arial;
 	margin: 0 0 1em 1em;
 
+	/* iPhone 6+ */
+	@media (min-width:376px)  {
+		margin-left: 0;
+	}
+
 	/* desktop */
 	@media (min-width:1050px)  {
 		margin: 64px 0 50px 0;
