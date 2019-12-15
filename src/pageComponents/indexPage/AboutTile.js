@@ -74,17 +74,6 @@ const SPACPicture = styled.img`
 	zoom: 17%;
 `;
 
-const BackgroundFootPicture = styled.img`
-	/* MOBILE */
-	display: none;
-
-	/* desktop */
-	@media (min-width: 1050px)  {
-		display: relative;	
-		top: 30px;
-	}
-`;
-
 const MobileHeading = styled.h2`
 	color: #646464;
 	font-weight: bold;

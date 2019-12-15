@@ -15,6 +15,6 @@ const IndexPage = () => {
 			<LocationAndHoursTile />
 		</React.Fragment>
 	);
-}
+};
 
 export default IndexPage;
