@@ -43,10 +43,11 @@ const TextBlock = styled.span`
 const Title = styled.span`
 	font-weight: bold;
 	font-style: italic;
-	color: mediumpurple;
 	font-size: 18px;	
 	line-height: 24px;
 	margin-bottom: 0.125rem;
+	font-style: italic;
+	color: blue;
 `;
 
 const Contact = styled.span`
@@ -105,6 +106,11 @@ const VerticalSpacingDiv = styled.div`
 	}
 `;
 
+const LinkWrapper = styled.span`
+	display: flex;
+	justify-content: flex-start;
+`;
+
 const IntroTile = () => {
 	return (
 		<IntroWrapper id="intro">
@@ -129,15 +135,19 @@ const IntroTile = () => {
 						<TextBlock>
 							<Tel>
 								<Title>Telephone:</Title>
-								<ContactPlainLink href="tel:+447824159320"> 
-									+44(0)7824159320
-								</ContactPlainLink> 
+								<LinkWrapper>
+									<ContactPlainLink href="tel:+447824159320"> 
+										+44(0)7824159320
+									</ContactPlainLink>
+								</LinkWrapper>								 
 							</Tel>
 							<Contact>
 								<Title>Email:</Title>
-								<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
-									sarahjdeeks@gmail.com
-								</ContactPlainLink>
+								<LinkWrapper>
+									<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
+										sarahjdeeks@gmail.com
+									</ContactPlainLink>
+								</LinkWrapper>								
 							</Contact>
 						</TextBlock>
 					</p>

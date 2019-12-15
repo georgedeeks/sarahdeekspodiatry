@@ -15,13 +15,8 @@ const StyledLink = styled.a`
 	text-align: center;
 	white-space:nowrap;
 	
-	${props => props.active && props.active === 'true' && `
-		border-bottom: 4px solid #ACD4CE;
-		height: 37px;
-	`}
-
 	:hover {
-		border-bottom: 4px solid blue;
+		border-bottom: 4px solid purple;
 		cursor: pointer;
 		height: 37px;
 	}
@@ -58,11 +53,10 @@ const StyledLink = styled.a`
 	`}
 `;
 
-const ActiveLink = ({pathname, href, title, withRightMargin = false, hideOnMobile = false}) => {	
+const ActiveLink = ({href, title, withRightMargin = false, hideOnMobile = false}) => {	
 	return (
 		<StyledLink 
 			href={href}
-			active={(pathname === href).toString()}
 			withRightMargin={withRightMargin}
 			hideOnMobile={hideOnMobile}
 		>
@@ -72,7 +66,6 @@ const ActiveLink = ({pathname, href, title, withRightMargin = false, hideOnMobil
 };
 
 ActiveLink.propTypes = {
-	pathname: PropTypes.string.isRequired,
 	href: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	withRightMargin: PropTypes.bool,

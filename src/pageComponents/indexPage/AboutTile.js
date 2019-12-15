@@ -5,7 +5,7 @@ import blueSarah from "../../images/sarah-profile.png";
 
 import hcpcLogo from '../../images/hcpc-logo-300x254.jpg';
 import socPandCLogo from '../../images/soc-chi-pod.png';
-import footprintTopLeftFoot from "../../images/footprint-top-left-foot.svg";
+import footprintLeft from "../../images/footprint-top-left-foot.svg";
 
 import Paragraph from '../../components/Paragraph';
 
@@ -162,6 +162,16 @@ const MegaWrapper = styled.div`
 	}
 `;
 
+const AnotherBackgroundFootPicture = styled.img`
+	/* mobile first */
+	display: none;
+
+	@media (min-width: 1050px)  {
+		display: initial;
+		padding-left: 10%;
+	}	
+`;
+
 const AboutTile = () => {
 	return (
 		<Wrapper id="about">
@@ -218,7 +228,7 @@ const AboutTile = () => {
 						</p> 
 					</Paragraph>
 
-					<BackgroundFootPicture src={footprintTopLeftFoot} alt="Background image of foot" />
+					<AnotherBackgroundFootPicture src={footprintLeft} alt="Background image of purple foot" />
 
 				</Writing>
 

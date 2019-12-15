@@ -168,24 +168,20 @@ const Header = ({pathname}) => {
 					<ActiveLink 
 						hideOnMobile 
 						title="Home" 
-						pathname={pathname} 
 						href="#top" 
 					/>
 					<ActiveLink 
 						title="About" 
-						pathname={pathname} 
 						href="#about" 
 					/>
 					<ActiveLink 
 						withRightMargin 
 						title="Services" 
-						pathname={pathname} 
 						href="#services" 
 					/>
 					<ActiveLink 
 						withRightMargin 
 						title="Location & Contact" 
-						pathname={pathname} 
 						href="#location-hours" 
 					/>
 				</Nav>

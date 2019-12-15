@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledPlainLink = styled.a`
-	color: #646464;
+	color: purple;
 	text-decoration: underline;
 
 	:hover {
@@ -10,7 +10,7 @@ const StyledPlainLink = styled.a`
 	}
 		
 	:active {
-		color: purple;
+		color: mediumpurple;
 	}	
 `;
 

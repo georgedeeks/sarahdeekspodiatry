@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import footprintLeft from "../../images/footprint-left-services.svg";
+
 import VerticalSpacing from '../../components/VerticalSpacing';
 
 const Container = styled.div`
@@ -274,6 +276,16 @@ const TwoSquaresBottom = styled.div`
 	}
 `;
 
+const BackgroundFootPicture = styled.img`
+	/* mobile first */
+	display: none;
+	
+	@media (min-width: 1050px)  {
+		display: initial;
+		padding-left: 10%;
+	}	
+`;
+
 const ServicesTile = () => {
 	return (
 		<ServicesWrapper id="services">
@@ -306,6 +318,9 @@ const ServicesTile = () => {
 
 				<VerticalSpacing size={1} />
 			</Wrapper>
+
+			<BackgroundFootPicture src={footprintLeft} alt="Background image of left foot" />
+
 		</ServicesWrapper>
 	);
 };

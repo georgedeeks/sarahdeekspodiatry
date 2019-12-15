@@ -73,6 +73,7 @@ const LogoContainer = styled.div`
 	@media (min-width:1050px)  {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		height: 100%;
 		width: 100%;
 	}
@@ -142,8 +143,8 @@ const ContactPlainLink = styled(PlainLink)`
 
 const ContactType = styled.span`
 	font-style: italic;
-	color: purple;
-	opacity: 0.75;
+	color: #646464;
+	opacity: 0.9;
 `;
 
 const Footer = () => {
