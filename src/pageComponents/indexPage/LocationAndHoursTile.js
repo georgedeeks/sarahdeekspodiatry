@@ -45,7 +45,6 @@ const InfoWrapper = styled.div`
 
 const Location = styled.div`
 	height: 50px;	
-
 	width: 300px;
 
 	/* iphone 6 and above */
@@ -53,13 +52,10 @@ const Location = styled.div`
 		width: 350px;	
 	}	
 
-	/* iphone 6 and above */
+	/* iphone 7 and above */
 	@media (min-width: 500px)  {
 		width: 400px;	
-	}	
-
-
-
+	}
 `;
 
 const Times = styled.div`
@@ -68,9 +64,7 @@ const Times = styled.div`
 	/* MOBILE */
 	@media (max-width:1050px)  {
 		text-align: left;
-
 	}
-
 `;
 
 const Bold = styled.div`
@@ -98,6 +92,7 @@ const FootPicture = styled.img`
 `;
 
 const SmallText = styled.div`
+	/* smallest viewport */
 	display: none;
 
 	/* iphone 6 and above */
@@ -137,7 +132,7 @@ const LocationWrapper = styled.div`
 	}	
 `;
 
-const SpecialDiv = styled.div`
+const Area = styled.div`
 	margin-bottom: 1rem;
 `;
 
@@ -158,7 +153,6 @@ const StyledHeading = styled.h2`
 	font-family: Arial;
 	margin: 0 0 1em 1em;
 
-
 	/* desktop */
 	@media (min-width:1050px)  {
 		margin: 64px 0 50px 0;
@@ -166,6 +160,7 @@ const StyledHeading = styled.h2`
 `;
 
 const OnlyDesktop = styled.div`
+	/* mobile */
 	display: none;
 
 	/* desktop */
@@ -193,8 +188,8 @@ const LocationAndHoursTile = () => {
 						<Address>
 							<div>307 Regents Park Rd</div>
 							<OnlyDesktop>,&nbsp;</OnlyDesktop>
-							<SpecialDiv>Finchley, London N3 1DP</SpecialDiv>
-							</Address>
+							<Area>Finchley, London N3 1DP</Area>
+						</Address>
 					</Location>
 
 					<Times>
@@ -215,8 +210,7 @@ const LocationAndHoursTile = () => {
 					style={{"border" : "0"}}
 					allowFullScreen
 					title="google-maps"
-				/>
-				
+				/>				
 
 			</ContentWrapper>
 

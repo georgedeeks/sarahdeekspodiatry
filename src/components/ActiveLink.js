@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import styled from "styled-components";
-import { Link } from "gatsby";
-
-import { transformPathnameToTitle } from '../utils';
 
 const StyledLink = styled.a`
 	text-decoration: none;
@@ -34,7 +31,7 @@ const StyledLink = styled.a`
 		height: 37px;
 	}	
 
-	${props => props.services && props.services === 'true' && `
+	${props => props.withRightMargin && `
     margin-right: 2.5rem;
 	`}
 
@@ -53,22 +50,21 @@ const StyledLink = styled.a`
 		display: initial;
 	}
 
-	${props => props.displayHiddenOn619 && props.displayHiddenOn619 === 'true' && `
+	${props => props.hideOnMobile && `
 		/* MOBILE */
 		@media (max-width: 620px)  {
 			display: none;
 		}
 	`}
-
 `;
 
-const ActiveLink = ({pathname, href, title, services, displayHiddenOn619}) => {	
+const ActiveLink = ({pathname, href, title, withRightMargin = false, hideOnMobile = false}) => {	
 	return (
 		<StyledLink 
 			href={href}
 			active={(pathname === href).toString()}
-			services={services}
-			displayHiddenOn619={displayHiddenOn619}
+			withRightMargin={withRightMargin}
+			hideOnMobile={hideOnMobile}
 		>
 			{title}
 		</StyledLink>	
@@ -79,9 +75,8 @@ ActiveLink.propTypes = {
 	pathname: PropTypes.string.isRequired,
 	href: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	services: PropTypes.string.isRequired,
-	displayHiddenOn619: PropTypes.string.isRequired,
-
+	withRightMargin: PropTypes.bool,
+	hideOnMobile: PropTypes.bool,
 };
 
 export default ActiveLink;

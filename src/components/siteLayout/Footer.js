@@ -78,13 +78,6 @@ const LogoContainer = styled.div`
 	}
 `;
 
-const InfoContainer = styled.div`
-	display: flex;
-	justify-content: space-between;
-	justify-content: flex-start;
-
-`;
-
 const HCPCPicture = styled.img`
 	display: none;
 	zoom: 0%;
@@ -106,7 +99,6 @@ const SPACPicture = styled.img`
 		zoom: 24%;
 		display: initial;
 	}
-
 `;
 
 const TextBlock = styled.div`
@@ -115,8 +107,6 @@ const TextBlock = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex: 1;
-
-
 `;
 
 const PictureFrameLeft = styled.div`

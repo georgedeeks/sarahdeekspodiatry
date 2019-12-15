@@ -7,10 +7,7 @@ import hcpcLogo from '../../images/hcpc-logo-300x254.jpg';
 import socPandCLogo from '../../images/soc-chi-pod.png';
 import footprintTopLeftFoot from "../../images/footprint-top-left-foot.svg";
 
-import Tile from '../../components/Tile';
-import Heading from '../../components/Heading';
 import Paragraph from '../../components/Paragraph';
-import VerticalSpacing from "../../components/VerticalSpacing";
 
 const Writing = styled.div`
 	padding-top: 135px;
@@ -78,7 +75,7 @@ const SPACPicture = styled.img`
 `;
 
 const BackgroundFootPicture = styled.img`
-
+	/* MOBILE */
 	display: none;
 
 	/* desktop */
@@ -107,7 +104,7 @@ const MobileHeading = styled.h2`
 `;
 
 const DesktopHeading = styled.h2`
-	/*mobile */
+	/* mobile */
 	display: none;
 	margin: 0;
 	padding: 0;

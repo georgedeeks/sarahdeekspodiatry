@@ -133,19 +133,23 @@ const LogoWrapper = styled.div`
 const Header = ({pathname}) => {
 	const [hasScrolled, setHasScrolled] = React.useState(false);
 
+	// TODO is hasScrolled not being used?
+	// eslint-disable-next-line
   const onScroll = throttle((hasScrolled) => {
 		setHasScrolled(window.pageYOffset > 60);
 	}, 800);
 
   React.useEffect(() => {
-    window && window.addEventListener('scroll', onScroll);
-    onScroll(hasScrolled);
-
-    return () => window && window.removeEventListener('scroll', onScroll);
+    if (window) {
+			window.addEventListener('scroll', onScroll);
+			onScroll(hasScrolled);
+			return () => window.removeEventListener('scroll', onScroll);
+		}
+ 
+		return null;
 	});
 	
-  var headerHeight = hasScrolled
-    ? HEADER_HEIGHT_SMALL
+  var headerHeight = hasScrolled ? HEADER_HEIGHT_SMALL
 		: HEADER_HEIGHT_LARGE;
 
 	return (
@@ -162,20 +166,27 @@ const Header = ({pathname}) => {
 
 				<Nav>
 					<ActiveLink 
-						displayHiddenOn619="true" services="false" 
-						title="Home" pathname={pathname} href="#top" 
+						hideOnMobile 
+						title="Home" 
+						pathname={pathname} 
+						href="#top" 
 					/>
 					<ActiveLink 
-						displayHiddenOn619="false" services="false" 
-						title="About" pathname={pathname} href="#about" 
+						title="About" 
+						pathname={pathname} 
+						href="#about" 
 					/>
 					<ActiveLink 
-						displayHiddenOn619="false" services="true" 
-						title="Services" pathname={pathname} href="#services" 
+						withRightMargin 
+						title="Services" 
+						pathname={pathname} 
+						href="#services" 
 					/>
 					<ActiveLink 
-						displayHiddenOn619="false" services="true" 
-						title="Location & Contact" pathname={pathname} href="#location-hours" 
+						withRightMargin 
+						title="Location & Contact" 
+						pathname={pathname} 
+						href="#location-hours" 
 					/>
 				</Nav>
 

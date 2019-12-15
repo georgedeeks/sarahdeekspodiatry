@@ -7,13 +7,15 @@ const Wrapper = styled.div`
 	justify-content: center;
 	padding: 60px 200px;
 	background: ${props => props.background || 'none'};
-	height: ${props => props.height || 1}px;
+	height: ${props => props.height}px;
 `;
+
+const MIN_HEIGHT = 250;
 
 const Tile = ({children, background, height, id}) => (
 	<Wrapper 
 		background={background} 
-		height={(height > 250) ? height : 251}
+		height={(height > MIN_HEIGHT) ? height : MIN_HEIGHT}
 		id={id}
 	>
 		{children}
@@ -24,6 +26,7 @@ Tile.propTypes = {
 	children: PropTypes.node,
 	background: PropTypes.string,
 	height: PropTypes.number.isRequired,
+	id: PropTypes.string,
 };
 
 export default Tile;

@@ -4,11 +4,8 @@ import styled from "styled-components";
 import feetOnRock from "../../images/feet-on-rock.png";
 import footprintTopRightFoot from "../../images/footprint-top-right-foot.svg";
 
-
-import Tile from '../../components/Tile';
 import PlainLink from '../../components/PlainLink';
 import Paragraph from '../../components/Paragraph';
-import VerticalSpacing from '../../components/VerticalSpacing';
 
 const FootPicture = styled.img`
 	/* mobile first */
@@ -28,7 +25,6 @@ const FootPicture = styled.img`
 const Wrapper = styled.div`
 	/* mobile first */
 	
-
 	@media (min-width: 1050px)  {
 		display: flex;
 		flex-direction: row;
@@ -40,24 +36,17 @@ const TextBlock = styled.span`
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-
 	font-size: 1.5rem;
-
 	margin-top: 1.5rem;
 `;
 
 const Title = styled.span`
 	font-weight: bold;
 	font-style: italic;
-
 	color: mediumpurple;
-
-
 	font-size: 18px;	
 	line-height: 24px;
-
 	margin-bottom: 0.125rem;
-
 `;
 
 const Contact = styled.span`
@@ -85,8 +74,6 @@ const BackgroundFootPicture = styled.img`
 `;
 
 const IntroWrapper = styled.div`
-
-
 	/* mobile first */
 	background: #EBF0EF;
 	height: 440px;
@@ -101,15 +88,12 @@ const IntroWrapper = styled.div`
 	@media (min-width: 375px)  {
 		height: 400px;
 	}
-
 	
 	@media (min-width: 1050px)  {
 		display: flex;
 		justify-content: center;
 		height: 586px;
-		display: inline-grid;		
-
-			
+		display: inline-grid;					
 	}
 `;
 
@@ -134,7 +118,7 @@ const IntroTile = () => {
 						<b> Finchley Road</b>, West London.
 					</p>
 					<p>
-						I am a HCPC-certified podiatrist with over 5 years' experience working across London, 
+						I am a HCPC-certified podiatrist with over 5 years&apos; experience working across London, 
 						and offer a range of services.
 					</p>
 					<p>

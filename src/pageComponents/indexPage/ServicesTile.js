@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import Tile from '../../components/Tile';
-import Heading from '../../components/Heading';
 import VerticalSpacing from '../../components/VerticalSpacing';
 
 const Container = styled.div`
@@ -41,7 +39,7 @@ const ServiceSquare = styled.div`
 
 	/* desktop */
 	@media (min-width: 1050px)  {
-		${props => props.desktopMr && props.desktopMr === '80' && `
+		${props => props.withMarginRight && `
 			margin-right: 80px;
 		`}
 	}
@@ -98,8 +96,6 @@ const SpecialBottomExplanationText = styled(BottomExplanationText)`
 	font-style: normal;
 `;
 
-
-
 const Title = styled.div`
 	height: 46px;
 	width: 260px;
@@ -119,9 +115,6 @@ const Divider = styled.div`
 	border: 2px solid #ACD4CE;
 `;
 
-const SpecialDivider = styled(Divider)`
-`;
-
 const Wrapper = styled.div`
 	display: flex; 
 	flex-direction: column;
@@ -129,7 +122,6 @@ const Wrapper = styled.div`
 `;
 
 const Price = styled.div`
-
 	color: #7ECDC1;
 	font-family: Arial;
 	font-size: 24px;
@@ -139,16 +131,13 @@ const Price = styled.div`
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-
 `;
-
 
 const List = styled.ul`
 	padding: 0;
-	margin-left: 0; /*2.25rem;*/
+	margin-left: 0; 
   list-style: none;
-
-	`;
+`;
 
 const ServicesHeading = styled.h2`
 	color: #646464;
@@ -167,14 +156,12 @@ const ServicesHeading = styled.h2`
 	}
 `;
 
-// TODO do i need ant-row installed?
+// TODO use ant-row?
 const ServicesWrapper = styled.div`
 	background: #EDEAF2;
-
 	height: 1470px;
 	width: 100%;
-	flex-direction: column;
-	
+	flex-direction: column;	
 	padding-top: 30px;
 
 	/* desktop */
@@ -241,7 +228,7 @@ const SquareTwo = () => (
 const SquareThree = () => (
 	<React.Fragment>
 		<Title>Initial consultation</Title>
-		<SpecialDivider />
+		<Divider />
 		<SpecialBottomExplanationText>
 			A short meeting, 15 minutes if required, to assess foot health and treatment plan.
 		</SpecialBottomExplanationText>
@@ -296,7 +283,7 @@ const ServicesTile = () => {
 				<Container>
 
 					<TwoSquares>
-						<MobileSquare desktopMr="80">
+						<MobileSquare withMarginRight>
 							<SquareOne />
 						</MobileSquare>
 
@@ -306,7 +293,7 @@ const ServicesTile = () => {
 					</TwoSquares>
 					
 					<TwoSquaresBottom>
-						<MobileSquare desktopMr="80">
+						<MobileSquare withMarginRight>
 							<SquareThree />
 						</MobileSquare>
 

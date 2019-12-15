@@ -9,8 +9,9 @@ const Index = ({location}) => {
 	return (
 		<>
 			<Helmet>
-				<meta charSet="utf-8" />
 				<title>Sarah Deeks Podiatry</title>
+				
+				<meta charSet="utf-8" />
 				<meta name="google-site-verification" content="1UCUNug1lgxZygvTYTzdz1szPQE7Z4lNi_hGSTnqiuk" />
 			</Helmet>
 

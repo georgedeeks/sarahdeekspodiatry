@@ -5,24 +5,20 @@ import styled from "styled-components";
 import Header from "./siteLayout/Header";
 import Footer from "./siteLayout/Footer";
 
-const Main = styled.main`
-`;
-
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
 
 // TODO pathname >> currentPathname all src refactor
-const SiteLayout = ({title, children, pathname}) => 
+const SiteLayout = ({children, pathname}) => 
 	<Wrapper>
 
 		<Header pathname={pathname} />
 
-
-		<Main>
+		<main>
 			{children}
-		</Main>
+		</main>
 
 		<Footer />
 
