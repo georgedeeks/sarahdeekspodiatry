@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+// import { useStaticQuery, graphql } from "gatsby";
+// import Img from "gatsby-image";
 
 import blueSarah from "../../images/sarah-profile.png";
 
@@ -162,6 +164,19 @@ const AnotherBackgroundFootPicture = styled.img`
 `;
 
 const AboutTile = () => {
+	// import blueSarah from "../../images/sarah-profile.png";
+	// const data = useStaticQuery(graphql`
+	// 	query MyQuery {
+	// 		file(relativePath: { eq: "sarah-profile.png" }) {
+	// 			childImageSharp {
+	// 				# Specify the image processing specifications right in the query.
+	// 				fluid {
+	// 					...GatsbyImageSharpFluid
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// `);
 	return (
 		<Wrapper id="about">
 			<MobileHeading>
@@ -172,6 +187,7 @@ const AboutTile = () => {
 
 				<PicsWrapper>
 					<SarahPic src={blueSarah} alt="Picture of Sarah" />
+					{/* <Img fluid={data.file.childImageSharp.fluid} alt="Picture of Sarah" /> */}
 					<LogosWrapper>
 						<SPACPicture src={socPandCLogo} alt="SPAC logo" />
 						<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
