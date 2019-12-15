@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
+import get from "lodash/get";
 
 import hcpcLogo from '../../images/hcpc-logo-300x254.jpg';
 import socPandCLogo from '../../images/soc-chi-pod.png';
@@ -161,20 +162,23 @@ const AnotherBackgroundFootPicture = styled.img`
 	}	
 `;
 
-const AboutTile = () => {
-	// TODO use a fragment
-	const data = useStaticQuery(graphql`
-		query GetImageFiles {
-			sarahFile: file(relativePath: { eq: "sarah-profile.png" }) {
-				childImageSharp {
-					# Specify the image processing specifications right in the query.
-					fluid {
-						...GatsbyImageSharpFluid
-					}
+export const FILES_QUERY = graphql`
+	query FilesQuery {
+		sarahFile: file(relativePath: { eq: "sarah-profile.png" }) {
+			childImageSharp {
+				# Specify the image processing specifications right in the query.
+				fluid {
+					...GatsbyImageSharpFluid
 				}
 			}
 		}
-	`);
+	}
+`;
+
+const AboutTile = () => {
+	// TODO use a fragment
+	const data = useStaticQuery(FILES_QUERY);
+	const sarahFluid = get(data, 'sarahFile.childImageSharp.fluid', null);
 	return (
 		<Wrapper id="about">
 			<MobileHeading>
@@ -184,9 +188,11 @@ const AboutTile = () => {
 			<MegaWrapper>
 
 				<PicsWrapper>
-					<SarahPicWrapper>
-						<Img fluid={data.sarahFile.childImageSharp.fluid} alt="Picture of Sarah" />
-					</SarahPicWrapper>
+					{sarahFluid && (
+						<SarahPicWrapper>
+							<Img fluid={sarahFluid} alt="Picture of Sarah" />
+						</SarahPicWrapper>
+					)}				
 					<LogosWrapper>
 						<SPACPictureWrapper src={socPandCLogo} alt="SPAC logo" />
 						<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
