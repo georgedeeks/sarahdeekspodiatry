@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-// import { useStaticQuery, graphql } from "gatsby";
-// import Img from "gatsby-image";
-
-import blueSarah from "../../images/sarah-profile.png";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 
 import hcpcLogo from '../../images/hcpc-logo-300x254.jpg';
 import socPandCLogo from '../../images/soc-chi-pod.png';
@@ -23,7 +21,7 @@ const Writing = styled.div`
 	}
 `;
 
-const SarahPic = styled.img`
+const SarahPicWrapper = styled.div`
 	padding-right: 80px;
 	padding-top: 60px;
 	max-height: 400px;
@@ -72,7 +70,7 @@ const HCPCPicture = styled.img`
 	}
 `;
 
-const SPACPicture = styled.img`
+const SPACPictureWrapper = styled.img`
 	zoom: 17%;
 `;
 
@@ -164,19 +162,19 @@ const AnotherBackgroundFootPicture = styled.img`
 `;
 
 const AboutTile = () => {
-	// import blueSarah from "../../images/sarah-profile.png";
-	// const data = useStaticQuery(graphql`
-	// 	query MyQuery {
-	// 		file(relativePath: { eq: "sarah-profile.png" }) {
-	// 			childImageSharp {
-	// 				# Specify the image processing specifications right in the query.
-	// 				fluid {
-	// 					...GatsbyImageSharpFluid
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// `);
+	// TODO use a fragment
+	const data = useStaticQuery(graphql`
+		query GetImageFiles {
+			sarahFile: file(relativePath: { eq: "sarah-profile.png" }) {
+				childImageSharp {
+					# Specify the image processing specifications right in the query.
+					fluid {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+		}
+	`);
 	return (
 		<Wrapper id="about">
 			<MobileHeading>
@@ -186,10 +184,11 @@ const AboutTile = () => {
 			<MegaWrapper>
 
 				<PicsWrapper>
-					<SarahPic src={blueSarah} alt="Picture of Sarah" />
-					{/* <Img fluid={data.file.childImageSharp.fluid} alt="Picture of Sarah" /> */}
+					<SarahPicWrapper>
+						<Img fluid={data.sarahFile.childImageSharp.fluid} alt="Picture of Sarah" />
+					</SarahPicWrapper>
 					<LogosWrapper>
-						<SPACPicture src={socPandCLogo} alt="SPAC logo" />
+						<SPACPictureWrapper src={socPandCLogo} alt="SPAC logo" />
 						<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
 					</LogosWrapper>
 				</PicsWrapper>
@@ -236,9 +235,7 @@ const AboutTile = () => {
 					<AnotherBackgroundFootPicture src={footprintLeft} alt="Background image of purple foot" />
 
 				</Writing>
-
 			</MegaWrapper>
-
 		</Wrapper>
 	);
 };

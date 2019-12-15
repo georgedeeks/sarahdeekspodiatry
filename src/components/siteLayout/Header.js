@@ -23,6 +23,7 @@ const NativeHeader = styled.header`
 	align-items: flex-end;
 	display: flex;
 	align-items: flex-end;
+	z-index: 10;
 	height: ${props => props.hasScrolled ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE}px;
 
 	transition: height 0.1s ease-in-out;
