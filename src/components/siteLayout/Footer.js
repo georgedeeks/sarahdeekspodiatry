@@ -162,7 +162,7 @@ const Footer = () => {
 						</PictureFrameLeft>
 
 						<TextBlock>
-							<Title>Sarah Deeks Podiatry</Title>
+							<Title>Foot Care Finchley</Title>
 							<div>
 								<ContactType>Tel: </ContactType>
 								<ContactPlainLink href="tel:+447824159320"> 

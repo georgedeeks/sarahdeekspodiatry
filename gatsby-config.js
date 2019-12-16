@@ -14,8 +14,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Sarah Deeks Podiatry`,
-        short_name: `SD Podiatry`,
+        name: `Foot Care Finchley`,
+        short_name: `Foot Care Finchley`,
         start_url: `/`,
         icon: `src/images/logo_symbol.png`,
       },
