@@ -198,9 +198,6 @@ const LocationAndHoursTile = () => {
 					</Location>
 
 					<Times>
-						<div>
-							Monday-Thursday <b>CLOSED</b>
-						</div>
 						<Purple>
 							Friday <b>12:00 – 18:00</b>
 						</Purple>
