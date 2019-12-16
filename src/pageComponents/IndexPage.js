@@ -13,6 +13,24 @@ const IndexPage = () => {
 			<AboutTile />
 			<ServicesTile />
 			<LocationAndHoursTile />
+			<script type="application/ld+json">
+			{`{
+				"@context": "https://schema.org",
+				"@type": "LocalBusiness",
+				"address": {
+					"addressCountry": "GB",
+					"addressLocality": "Finchley",
+					"streetAddress": "307 Regents Park Rd",
+					"addressRegion": "London"
+				},
+				"areaServed": "Finchley",
+				"url": "https://www.sarahdeekspodiatry.co.uk",
+				"name": "Foot Care Finchley",
+				"naics": "621391",
+				"telephone": "+44 (0)7824 159 320",
+				"image": "https://www.sarahdeekspodiatry.co.uk/static/logo_symbol_small.png"
+			}`}
+			</script>
 		</React.Fragment>
 	);
 };
