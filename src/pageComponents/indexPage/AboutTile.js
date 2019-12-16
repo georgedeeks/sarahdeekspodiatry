@@ -61,9 +61,9 @@ const LogosWrapper = styled.div`
 `;
 
 const HCPCPicture = styled.img`
-	zoom: 17%;
-	padding: 15px;
-	padding-right: 480px;
+	max-height: 45px;
+	float: right;
+	padding-right: 80px;
 
 	/* MOBILE */
 	@media (max-width:1050px)  {
@@ -72,7 +72,7 @@ const HCPCPicture = styled.img`
 `;
 
 const SPACPictureWrapper = styled.img`
-	zoom: 17%;
+	max-height: 45px;
 `;
 
 const MobileHeading = styled.h2`

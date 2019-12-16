@@ -81,11 +81,10 @@ const LogoContainer = styled.div`
 
 const HCPCPicture = styled.img`
 	display: none;
-	zoom: 0%;
 
 	/* desktop */
 	@media (min-width:1050px)  {
-		zoom: 24%;
+		height: 80px;
 		padding: 10px;
 		display: initial;
 	}
@@ -93,11 +92,10 @@ const HCPCPicture = styled.img`
 
 const SPACPicture = styled.img`
 	display: none;
-	zoom: 0%;
 	
 	/* desktop */
 	@media (min-width:1050px)  {
-		zoom: 24%;
+		height: 80px;
 		display: initial;
 	}
 `;
