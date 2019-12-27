@@ -12,7 +12,6 @@ const NativeFooter = styled.footer`
   position: relative;
   left: 0;
   bottom: 0;
-  height: 261px; /* matches global.css body margin-bottom */
   width: 100%;
 	overflow: hidden;
 	
@@ -42,12 +41,11 @@ const FootPicture = styled.img`
 `;
 
 const BackgroundContainer = styled.div`
-	height: 121px;
-	justify-content: center;
-	display: flex;
-
+	display: none;
+	
 	/* desktop */
 	@media (min-width:1050px)  {
+		display: flex;
 		height: 48px;
 	}
 `;
@@ -60,7 +58,7 @@ const ContentContainer = styled.div`
 	padding: 1rem 30px;
 
 	color: #646464;	
-	font-family: Arial;	
+	
 	font-size: 18px;	
 	line-height: 24px;
 `;
@@ -150,7 +148,6 @@ const Footer = () => {
 		<NativeFooter>
 		
 			<BackgroundContainer>
-				<FootPicture src={footOnlyLogo} alt="Foot logo" />
 			</BackgroundContainer>
 			
 			<ContentContainer>
@@ -164,7 +161,7 @@ const Footer = () => {
 						<TextBlock>
 							<Title>Foot Care Finchley</Title>
 							<div>
-								<ContactType>Tel: </ContactType>
+								<ContactType>Call: </ContactType>
 								<ContactPlainLink href="tel:+447824159320"> 
 									+44(0)7824159320
 								</ContactPlainLink>

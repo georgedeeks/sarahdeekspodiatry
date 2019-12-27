@@ -137,7 +137,7 @@ const Header = ({pathname}) => {
 	// TODO is hasScrolled not being used?
 	// eslint-disable-next-line
   const onScroll = throttle((hasScrolled) => {
-		setHasScrolled(window.pageYOffset > 60);
+		setHasScrolled(window.pageYOffset > 30);
 	}, 800);
 
   React.useEffect(() => {
@@ -177,12 +177,7 @@ const Header = ({pathname}) => {
 					/>
 					<ActiveLink 
 						withRightMargin 
-						title="Services" 
-						href="#services" 
-					/>
-					<ActiveLink 
-						withRightMargin 
-						title="Location & Contact" 
+						title="Location &amp; Contact" 
 						href="#location-hours" 
 					/>
 				</Nav>

@@ -28,7 +28,7 @@ const InfoWrapper = styled.div`
 	margin-bottom: 42px;
 
 	color: #646464;	
-	font-family: Arial;	
+	
 	font-size: 18px;	
 	line-height: 24px;
 
@@ -86,8 +86,9 @@ const FootPicture = styled.img`
 		display: initial;
 		width: 99px;
 		height: 96px;
-		top: calc(200px + -82px + 64px);
+		top: calc(200px + -42px + 64px - 128px);
 		position: relative;
+		z-index: 30;
 	} 
 `;
 
@@ -127,13 +128,12 @@ const LocationWrapper = styled.div`
 
 	/* desktop */
 	@media (min-width: 1050px)  {
-		height: 834px;
+		height: 706px;
 		justify-content: flex-start;
 	}	
 `;
 
 const Area = styled.div`
-	margin-bottom: 1rem;
 `;
 
 const Address = styled.div`
@@ -149,9 +149,7 @@ const Address = styled.div`
 const StyledHeading = styled.h2`
 	color: #646464;
 	font-weight: bold;
-	font-size: 42px;
-	font-family: Arial;
-	margin: 0 0 1em 1em;
+	font-size: 42px;	margin: 0 0 1em 1em;
 
 	/* iPhone 6+ */
 	@media (min-width:376px)  {
@@ -160,7 +158,7 @@ const StyledHeading = styled.h2`
 
 	/* desktop */
 	@media (min-width:1050px)  {
-		margin: 64px 0 50px 0;
+		margin: 25px 0 50px 0;
 	}
 `;
 
@@ -179,7 +177,7 @@ const LocationAndHoursTile = () => {
 		<LocationWrapper id="location-hours">
 			<ContentWrapper>
 				<StyledHeading>
-					Location & Hours
+					Location &amp; Hours
 				</StyledHeading>
 
 				<InfoWrapper>
@@ -195,11 +193,12 @@ const LocationAndHoursTile = () => {
 							<OnlyDesktop>,&nbsp;</OnlyDesktop>
 							<Area>Finchley, London N3 1DP</Area>
 						</Address>
+						<div>Nearest station: Finchley Central (5 minutes walk)</div>
 					</Location>
 
 					<Times>
 						<Purple>
-							Friday <b>12:00 – 18:00</b>
+							Appointments are available on Fridays.
 						</Purple>
 					</Times>
 				</InfoWrapper>

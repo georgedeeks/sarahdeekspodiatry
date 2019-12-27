@@ -14,7 +14,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Foot Care Finchley`,
+        name: `Sarah Deeks Podiatry - Foot Care in Finchley`,
         short_name: `Foot Care Finchley`,
         start_url: `/`,
         icon: `src/images/logo_symbol.png`,

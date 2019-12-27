@@ -1,25 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import hcpcLogo from '../../images/hcpc-logo-300x254.jpg';
+import socPandCLogo from '../../images/soc-chi-pod.png';
 
 import feetOnRock from "../../images/feet-on-rock.png";
+import sarahPic from "../../images/sarah-profile.png";
+import Img from "gatsby-image";
+import get from "lodash/get";
 import footprintTopRightFoot from "../../images/footprint-top-right-foot.svg";
 
 import PlainLink from '../../components/PlainLink';
 import Paragraph from '../../components/Paragraph';
 
-const FootPicture = styled.img`
-	/* mobile first */
-	display: none;
-	
-	@media (min-width: 1050px)  {
-		display: block;
-		max-width:660px;
-		max-height:320px;
-		width: auto;
-		height: auto;
-		margin-left: 5%;
-		margin-top: 30px;
-	}		
+import { useStaticQuery, graphql } from "gatsby";
+
+const SarahPicWrapper = styled.div`
+	max-width:240px;
+	width: auto;
+	height: auto;
 `;
 
 const Wrapper = styled.div`
@@ -64,20 +62,9 @@ const ContactPlainLink = styled(PlainLink)`
 	line-height: 24px;
 `;
 
-const BackgroundFootPicture = styled.img`
-/* mobile first */
-	display: none;
-	
-	@media (min-width: 1050px)  {
-		top: 30px;
-		display: initial;
-	}	
-`;
-
 const IntroWrapper = styled.div`
 	/* mobile first */
-	background: #EBF0EF;
-	height: 440px;
+	background: white;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -85,24 +72,19 @@ const IntroWrapper = styled.div`
 	display: relative;
 	width: 100%;
 
-	/* iphone 6 and above */
-	@media (min-width: 375px)  {
-		height: 400px;
-	}
-	
 	@media (min-width: 1050px)  {
 		display: flex;
 		justify-content: center;
-		height: 586px;
+		min-height: 586px;
 		display: inline-grid;					
 	}
 `;
 
 const VerticalSpacingDiv = styled.div`
-	height: 30px;
+	height: 10px;
 
 	@media (min-width: 1050px)  {
-		height: 50px;			
+		height: 10px;			
 	}
 `;
 
@@ -111,7 +93,60 @@ const LinkWrapper = styled.span`
 	justify-content: flex-start;
 `;
 
+const PicsWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 320px;
+	padding-left: 20px;
+
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		align-items: center;
+		justify-content: center;
+	}
+`;
+
+const LogosWrapper = styled.div`
+	flex: auto;
+	padding-top: 20px;
+
+	/* MOBILE */
+	@media (max-width:1050px)  {
+		width: 320px;
+		align-items: center;
+		padding-top: 5px;
+	}
+`;
+
+const HCPCPicture = styled.img`
+	max-height: 45px;
+	float: right;
+`;
+
+const SPACPictureWrapper = styled.img`
+	max-height: 45px;
+`;
+
+const SarahPic = styled.img`
+	max-height: 320px;
+`;
+
+export const FILES_QUERY = graphql`
+	query FilesQuery {
+		sarahFile: file(relativePath: { eq: "sarah-profile.png" }) {
+			childImageSharp {
+				# Specify the image processing specifications right in the query.
+				fluid {
+					...GatsbyImageSharpFluid
+				}
+			}
+		}
+	}
+`;
+
 const IntroTile = () => {
+	const data = useStaticQuery(FILES_QUERY);
+	const sarahFluid = get(data, 'sarahFile.childImageSharp.fluid', null);
 	return (
 		<IntroWrapper id="intro">
 
@@ -119,22 +154,29 @@ const IntroTile = () => {
 				<Paragraph>
 					<VerticalSpacingDiv />
 					<p>
-						I run a podiatric clinic on 
-						<b> Friday afternoons </b> in a modern setting on 
-						<b> Finchley Road</b>, West London.
+						Hi, I'm Sarah. I run a podiatric clinic in a modern setting in 
+						{" "}<b>Finchley</b>, North London.
 					</p>
 					<p>
 						I am a HCPC-certified podiatrist with over 5 years&apos; experience working across London, 
-						and offer a range of services.
+						and offer a range of services such as:
 					</p>
+					<ul>
+						<li>Routine foot assessments</li>
+						<li>Skin and nail care</li>
+						<li>Corns and callus removal</li>
+						<li>Toenail cutting and ingrown toenail treatment</li>
+						<li>Verrucae, fungal nails and infections</li>
+						<li>Cracked heels</li>
+						<li>Biomechanical assessment and custom-made orthotics</li>
+					</ul>
 					<p>
-						Get in touch today to make an appointment&hellip;
-						
+						Get in touch today to make an appointment and see how I can help you.
 					</p>
 					<p>
 						<TextBlock>
 							<Tel>
-								<Title>Telephone:</Title>
+								<Title>Call:</Title>
 								<LinkWrapper>
 									<ContactPlainLink href="tel:+447824159320"> 
 										+44(0)7824159320
@@ -153,11 +195,18 @@ const IntroTile = () => {
 					</p>
 				</Paragraph>
 
-				<FootPicture src={feetOnRock} alt="Picture of feet" />
+				<PicsWrapper>
+					<VerticalSpacingDiv />
+					{sarahFluid && (
+						<SarahPicWrapper>
+							<SarahPic src={sarahPic} />
+						 	{/* <Img fluid={sarahFluid} alt="Picture of Sarah" /> */}
+							 <SPACPictureWrapper src={socPandCLogo} alt="SPAC logo" />
+							<HCPCPicture src={hcpcLogo} alt="HCPC logo" />
+						</SarahPicWrapper>
+					)}				
+				</PicsWrapper>
 			</Wrapper>
-
-			<BackgroundFootPicture src={footprintTopRightFoot} alt="Background image of foot" />
-
 		</IntroWrapper>
 	);
 };

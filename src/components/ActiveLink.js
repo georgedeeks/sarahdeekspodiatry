@@ -8,7 +8,7 @@ const StyledLink = styled.a`
 	height: 41px;
 	min-width: 104px;
 	color: #646464;
-	font-family: Arial;
+
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 21px;
@@ -37,7 +37,7 @@ const StyledLink = styled.a`
 		height: 12px;
 		min-width: 52px;
 		color: #646464;
-		font-family: Arial;
+
 		font-size: 10px;
 		font-weight: bold;
 		line-height: 12px;

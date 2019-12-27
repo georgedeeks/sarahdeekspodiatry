@@ -50,7 +50,7 @@ const ServiceSquare = styled.div`
 const ExplanationPoint = styled.li`
 	width: 220px;
 	color: #646464;
-	font-family: Arial;
+	
 	font-size: 18px;
 	line-height: 21px;
 
@@ -80,9 +80,7 @@ const ExplanationPoint = styled.li`
 
 const ExplanationText = styled.div`
 	width: 260px;
-	color: #646464;
-	font-family: Arial;
-	font-size: 18px;
+	color: #646464;	font-size: 18px;
 	line-height: 21px;
 	text-align: center;
 `;
@@ -101,9 +99,7 @@ const SpecialBottomExplanationText = styled(BottomExplanationText)`
 const Title = styled.div`
 	height: 46px;
 	width: 260px;
-	color: #444444;
-	font-family: Arial;
-	font-size: 21px;
+	color: #444444;	font-size: 21px;
 	font-weight: bold;
 	line-height: 24px;
 	text-align: center;
@@ -124,9 +120,7 @@ const Wrapper = styled.div`
 `;
 
 const Price = styled.div`
-	color: #7ECDC1;
-	font-family: Arial;
-	font-size: 24px;
+	color: #7ECDC1;	font-size: 24px;
 	line-height: 28px;
 	padding-bottom: 37px;
 	display: flex;
@@ -144,17 +138,13 @@ const List = styled.ul`
 const ServicesHeading = styled.h2`
 	color: #646464;
 	font-weight: bold;
-	font-size: 42px;
-	font-family: Arial;
-	margin: 0 0 50px 0;
+	font-size: 42px;	margin: 0 0 50px 0;
 
 	/* desktop */
 	@media (min-width: 1050px)  {
 		color: #646464;
 		font-weight: bold;
-		font-size: 42px;
-		font-family: Arial;
-		margin: 4rem 0 50px 0;
+		font-size: 42px;		margin: 4rem 0 50px 0;
 	}
 `;
 
@@ -177,9 +167,7 @@ const MobileSquare = styled(ServiceSquare)`
 `;
 
 const RoutinePrice = styled.div`
-	color: #7ECDC1;
-	font-family: Arial;
-	font-size: 24px;
+	color: #7ECDC1;	font-size: 24px;
 	line-height: 28px;
 	padding-bottom: 12px;
 	display: flex;
@@ -190,9 +178,7 @@ const RoutinePrice = styled.div`
 
 const RoutineHome = styled.div`
 	color: purple;
-	font-style: italic;
-	font-family: Arial;
-	font-size: 18px;
+	font-style: italic;	font-size: 18px;
 	line-height: 20px;
 	padding-bottom: 25px;
 	display: flex;

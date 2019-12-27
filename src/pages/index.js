@@ -9,13 +9,13 @@ const Index = ({location}) => {
 	return (
 		<>
 			<Helmet>
-				<title>Foot Care Finchley - Podiatry &amp; Chiropody clinic</title>
+				<title>Foot Care Finchley - 07824 159 320</title>
 				
 				<meta charSet="utf-8" />
 				<meta name="google-site-verification" content="1UCUNug1lgxZygvTYTzdz1szPQE7Z4lNi_hGSTnqiuk" />
 			</Helmet>
 
-			<SiteLayout title="Foot Care Finchley" pathname={location.pathname}>
+			<SiteLayout title="Foot Care Finchley - 07824 159 320" pathname={location.pathname}>
 				<IndexPage />
 			</SiteLayout>
 		</>

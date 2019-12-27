@@ -11,7 +11,6 @@ const IndexPage = () => {
 		<React.Fragment>
 			<IntroTile />
 			<AboutTile />
-			<ServicesTile />
 			<LocationAndHoursTile />
 			<script type="application/ld+json">
 			{`{
