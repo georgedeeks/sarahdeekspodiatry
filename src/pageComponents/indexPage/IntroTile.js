@@ -183,14 +183,19 @@ const IntroTile = () => {
 									</ContactPlainLink>
 								</LinkWrapper>								 
 							</Tel>
-							<Contact>
+							<Tel>
 								<Title>Email:</Title>
 								<LinkWrapper>
 									<ContactPlainLink href="mailto:sarahjdeeks@gmail.com"> 
 										sarahjdeeks@gmail.com
 									</ContactPlainLink>
 								</LinkWrapper>								
-							</Contact>
+							</Tel>
+							<Tel>
+								<LinkWrapper>
+									<ContactPlainLink href="https://www.picktime.com/sarahdeekspodiatry">Or book online</ContactPlainLink>
+								</LinkWrapper>
+							</Tel>
 						</TextBlock>
 					</p>
 				</Paragraph>
