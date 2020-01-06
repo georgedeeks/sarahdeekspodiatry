@@ -179,7 +179,7 @@ const IntroTile = () => {
 								<Title>Call:</Title>
 								<LinkWrapper>
 									<ContactPlainLink href="tel:+447824159320"> 
-										+44(0)7824159320
+										07824 159 320
 									</ContactPlainLink>
 								</LinkWrapper>								 
 							</Tel>

@@ -12,6 +12,7 @@ const Index = ({location}) => {
 				<title>Foot Care Finchley - 07824 159 320</title>
 				
 				<meta charSet="utf-8" />
+				<meta name="description" content="Sarah Deeks is a podiatrist in the Finchley area" />
 				<meta name="google-site-verification" content="1UCUNug1lgxZygvTYTzdz1szPQE7Z4lNi_hGSTnqiuk" />
 			</Helmet>
 

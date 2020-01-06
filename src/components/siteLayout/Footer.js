@@ -163,7 +163,7 @@ const Footer = () => {
 							<div>
 								<ContactType>Call: </ContactType>
 								<ContactPlainLink href="tel:+447824159320"> 
-									+44(0)7824159320
+									07824 159 320
 								</ContactPlainLink>
 							</div>						
 							<div>

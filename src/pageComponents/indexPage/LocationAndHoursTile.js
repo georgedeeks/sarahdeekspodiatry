@@ -200,6 +200,7 @@ const LocationAndHoursTile = () => {
 						<Purple>
 							Appointments are available on Fridays.
 						</Purple>
+						<div><a href="https://www.picktime.com/sarahdeekspodiatry">Book appointments online</a> or call <a href="tel:+44(0)7824159320">07824 159 320</a></div>
 					</Times>
 				</InfoWrapper>
 

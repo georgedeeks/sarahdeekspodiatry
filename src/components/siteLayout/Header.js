@@ -180,6 +180,11 @@ const Header = ({pathname}) => {
 						title="Location &amp; Contact" 
 						href="#location-hours" 
 					/>
+					<ActiveLink 
+						withRightMargin 
+						title="Book Online" 
+						href="https://www.picktime.com/sarahdeekspodiatry" 
+					/>
 				</Nav>
 
 			</NativeHeader>
